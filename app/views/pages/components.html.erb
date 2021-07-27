@@ -87,7 +87,7 @@
 
         <!-- FRIEND CARDS -->
         <h2>FRIEND CARDS</h2>
-        <% Profile.all.sample(6).each do |profile| %>
+        <% @profiles.each do |profile| %>
           <%= link_to "#", class: "card-link" do %>
           <div class="card-friend">
             <% if profile.photo.attached? %>
@@ -113,7 +113,7 @@
 
         <!-- Hangout Cards -->
         <h2>HANGOUT CARDS</h2>
-        <% Hangout.all.sample(5).each do |hangout| %>
+        <% @hangouts.each do |hangout| %>
           <%= link_to "#", class: "card-link" do %>
           <div class="card-friend">
             <% if hangout.profile.photo.attached? %>

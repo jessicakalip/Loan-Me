@@ -8,5 +8,7 @@ class PagesController < ApplicationController
   end
 
   def components
+    @profiles = Profile.all.sample(6)
+    @hangouts = Hangout.all.sample(5)
   end
 end
