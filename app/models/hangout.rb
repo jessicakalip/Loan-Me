@@ -3,7 +3,7 @@ class Hangout < ApplicationRecord
 
   belongs_to :user
   belongs_to :profile
-  has_one :review
+  has_one :review, dependent: :destroy
   # validates :date, comparison: { greater_than: Date.today }
   validates :time, presence: true
 
