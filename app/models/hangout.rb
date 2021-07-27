@@ -1,13 +1,11 @@
 class Hangout < ApplicationRecord
+  attr_accessor :seed
+
   belongs_to :user
   belongs_to :profile
   has_one :review
   # validates :date, comparison: { greater_than: Date.today }
   validates :time, presence: true
-
-
-
-
 
   validates :date, presence: true
   validate :date_future?
@@ -15,8 +13,8 @@ class Hangout < ApplicationRecord
   private
 
   def date_future?
-    if :date < Date.today
-      errors.add(:date, "can't be in the past")
-    end
+    return if seed
+
+    errors.add(:date, "can't be in the past") if date < Date.today
   end
 end
