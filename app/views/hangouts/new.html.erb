@@ -1,6 +1,6 @@
-<h1>New Hangout</h1>
+<h1>Book a new Hangout</h1>
 <%= simple_form_for [@profile, @hangout] do |f| %>
       <%= f.input :date %>
       <%= f.input :time %>
-      <%= f.submit "Send a hangout",  class: "btn btn-primary rounded-pill" %>
+      <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
       <% end %>
