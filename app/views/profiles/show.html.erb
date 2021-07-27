@@ -10,7 +10,11 @@
   <div class="row">
       <%= link_to "Go Back", profile_path %>
       <div class="col-4">
-        <%= image_tag @profile.photo.attached? ? cl_image_path(@profile.photo.key, height: 300, crop: :fill) : 'https://image.shutterstock.com/image-vector/man-silhouette-icon-question-mark-260nw-192704537.jpg' %>
+        <% if @profile.photo.attached? %>
+          <%= cl_image_tag @profile.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+        <% else %>
+          <%= cl_image_tag "avatar_ivxvwp", width: 150, height: 150, crop: :thumb, gravity: :face %>
+        <% end %>
         <%= @profile.name %>
         <%= @profile.age %>
         <%= @profile.gender %>
@@ -21,9 +25,13 @@
 </div>
 
 
+
 <h1>Book a new Hangout</h1>
 <%= simple_form_for [@profile, @hangout] do |f| %>
       <%= f.input :date, html5: true, input_html: {min: Date.today} %>
       <%= f.input :time %>
       <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
       <% end %>
+
+
+
