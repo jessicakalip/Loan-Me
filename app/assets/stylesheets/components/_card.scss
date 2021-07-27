@@ -1,0 +1,40 @@
+.card-friend {
+  overflow: hidden;
+  height: 120px;
+  width: 100%;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: none;
+  &:hover {
+  background: lightgrey;
+  transition: .5s;
+  }
+}
+
+.card-friend img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-friend h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-friend p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-friend .card-friend-infos {
+  padding: 16px;
+}

@@ -1,6 +1,35 @@
 <!-- <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p> -->
+<!-- # NAVBAR -->
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <a class="navbar-brand" href="#">
+    <img src="https://i.ibb.co/C8pt2Gt/7117708842ad40a996cb95e93715bf9b-1.png" />
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Hangout Requests</a>
+      </li>
+      <li class="nav-item dropdown">
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- BANNER -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
     <h1><strong>Loan Me</strong></h1>
@@ -9,6 +38,7 @@
   </div>
 </div>
 
+<!-- FLASHES -->
 <h2>FLASHES</h2>
 <p>As seen in the bottom right corner. Cycle through them :)</p>
 <div class="flash flash-success alert alert-dismissible fade show" role="alert">
@@ -31,11 +61,89 @@
     <i class="fas fa-times"></i>
   </a>
 </div>
-<hr>
 
+<!-- Avatars -->
 <h2>AVATARS</h2>
 <img class="avatar" alt="avatar" src="https://qph.fs.quoracdn.net/main-qimg-342cdbdeae5280924912b8551e49a7c6" />
 <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
 <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
 <img class="avatar-square" alt="avatar-square" src="https://kitt.lewagon.com/placeholder/users/krokrob" />
-<hr>
+
+<!-- SEARCH BAR -->
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6">
+      <h2>SEARCH BAR</h2>
+      <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+        <div class="search-form-control form-group">
+          <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+          <button name="button" type="submit" class="btn btn-success">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+      </form>
+      <hr>
+
+      <h2>FRIEND CARDS</h2>
+
+      <% profile = Profile.first %> (can use find_by gender value)
+      <%= link_to "#" do %>
+        <div class="card-friend">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <!-- Add @Profile.photo erb into line above -->
+          <div class="card-friend-infos">
+            <h2>Friend Name <i class="fas fa-venus"></i> 20</h2>
+            <!-- Add @Profile.age erb into line above -->
+            <p>Interests: I like.....</p>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="card-friend">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <!-- Add @Profile.photo erb into line above -->
+        <div class="card-friend-infos">
+          <h2>Friend name <i class="fas fa-transgender-alt"></i> 41</h2>
+          <!-- Add @Profile.age erb into line above -->
+          <p>Interests: I like.....</p>
+        </div>
+      </div>
+
+      <div class="card-friend">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <!-- Add @Profile.photo erb into line above -->
+        <div class="card-friend-infos">
+          <h2>Friend name <i class="fas fa-mars"></i> 36 </h2>
+          <!-- Add @Profile.age erb into line above -->
+          <p>Interests: I like.....</p>
+        </div>
+      </div>
+
+      <div class="card-friend">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <!-- Add @Profile.photo erb into line above -->
+        <div class="card-friend-infos">
+          <h2>Friend name <i class="fas fa-venus"></i> 63</h2>
+          <!-- Add @Profile.age erb into line above -->
+          <p>Interests: I like.....</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    Don't be lonely, choose Loan Me!
+  </div>
+</div>
