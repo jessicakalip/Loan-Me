@@ -6,16 +6,14 @@ class Hangout < ApplicationRecord
   validates :time, presence: true
 
 
-
-
   validates :date, presence: true
-  validate :release_date_future?
+  validate :date_future?
 
   private
 
-  def release_date_future?
-    if release_date < Date.today
-      errors.add(:release_date, "can't be in the past")
+  def date_future?
+    if :date < Date.today
+      errors.add(:date, "can't be in the past")
     end
   end
 end
