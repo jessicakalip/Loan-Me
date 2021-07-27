@@ -1,6 +1,13 @@
 class ProfilesController < ApplicationController
+  def index
+    @profiles = Profile.all
+  end
+
+  def show
+    @profile = Profile.find(params[:id])
+  end
+
   def new
-    #@gender_list = Profile::GENRES
     @profile = Profile.new
   end
 
