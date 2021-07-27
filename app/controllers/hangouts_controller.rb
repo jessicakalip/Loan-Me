@@ -1,17 +1,14 @@
 class HangoutsController < ApplicationController
-
-  before_action :find_profile, only: [:create, :new]
+  before_action :find_profile, only: %i[create new]
 
   def index
     @hangouts = Hangout.all
   end
 
-
   def show
     @id = params[:id]
     @hangout = Hangout.find(@id)
   end
-
 
   def new
     @hangout = Hangout.new
@@ -39,5 +36,4 @@ class HangoutsController < ApplicationController
   def hangout_params
     params.require(:hangout).permit(:date, :time)
   end
-
 end

@@ -1,0 +1,42 @@
+<div class="banner">
+  <div class="container m-5 p-5 ">
+      <h1>Hangout Dashboard</h1>
+      <h3><em>Overview of past and present hangouts</em></h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+    <div class="col-1">
+      <h5>View</h5>
+    </div>
+    <div class="col-3">
+      <h5>Friend</h5>
+    </div>
+    <div class="col-3">
+      <h5>Status</h5>
+    </div>
+    <div class="col-3">
+      <h5>Details</h5>
+    </div>
+    </div>
+  <% @hangouts.each do |hangout| %>
+    <div class="row">
+    <div class="col-1">
+      <%= link_to hangout_path(hangout) do %>
+        <i class="fas fa-meh-rolling-eyes"></i>
+      <% end %>
+    </div>
+    <div class="col-3">
+      <p><%= hangout.profile.name %></p>
+    </div>
+    <div class="col-3">
+      <p><%= hangout.status %></p>
+    </div>
+    <div class="col-3">
+      <p><%= hangout.date.strftime("%b %d, %Y") %> | <%= hangout.time.strftime("%I:%M %p") %></p>
+    </div>
+    </div>
+  <% end %>
+</div>
