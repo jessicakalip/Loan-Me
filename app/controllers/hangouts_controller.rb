@@ -1,5 +1,5 @@
 class HangoutsController < ApplicationController
-  before_action :find_list, only: [:create, :new]
+  before_action :find_profile, only: [:create, :new]
 
    def show
     @id = params[:id]
