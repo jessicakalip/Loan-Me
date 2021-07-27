@@ -8,6 +8,6 @@ class Profile < ApplicationRecord
     in: GENRES,
     message: "%{value} is not a valid gender. (Male, female, other.)"
   }
-  has_many :hangouts
+  has_many :hangouts, dependent: :destroy
   has_many :reviews, through: :hangouts
 end

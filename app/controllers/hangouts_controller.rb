@@ -6,10 +6,8 @@ class HangoutsController < ApplicationController
     @hangouts = Hangout.all
   end
 
-
   def show
   end
-
 
   def new
     @hangout = Hangout.new
@@ -50,5 +48,4 @@ class HangoutsController < ApplicationController
   def hangout_params
     params.require(:hangout).permit(:date, :time)
   end
-
 end

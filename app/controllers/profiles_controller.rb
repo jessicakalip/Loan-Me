@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :destroy, :edit, :update]
+  before_action :set_profile, only: %i[show destroy edit update]
   def index
     @profiles = Profile.all
   end
@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    redirect_to dashboard_path
+    redirect_to profiles_path
   end
 
   private
