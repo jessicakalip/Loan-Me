@@ -9,9 +9,18 @@
   margin-top: 8px;
   margin-bottom: 8px;
   margin-right: none;
+  color: rgb(40,40,40);
   &:hover {
-  background: lightgrey;
-  transition: .5s;
+    background: lightgrey;
+    transition: .5s;
+    text-decoration: none;
+  }
+}
+
+.card-link {
+  color: rgb(40,40,40);
+  &:hover {
+    text-decoration: none;
   }
 }
 
