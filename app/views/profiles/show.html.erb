@@ -22,5 +22,16 @@
         <%= @profile.average_rating %>
       </div>
   </div>
-
 </div>
+
+
+
+<h1>Book a new Hangout</h1>
+<%= simple_form_for [@profile, @hangout] do |f| %>
+      <%= f.input :date, html5: true, input_html: {min: Date.today} %>
+      <%= f.input :time %>
+      <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
+      <% end %>
+
+
+
