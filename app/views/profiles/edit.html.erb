@@ -1,0 +1,9 @@
+<h1>Edit your Profile</h1>
+
+<%= simple_form_for @profile do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :gender, as: :select, collection: Profile::GENRES %>
+  <%= f.input :interest, label: "Add your interests here" %>
+  <%= f.submit %>
+<% end %>
