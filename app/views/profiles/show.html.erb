@@ -1,0 +1,22 @@
+<div class="banner">
+  <div class="container m-5 p-5 ">
+      <h1><%= @profile.name %>'s Bio</h1>
+      <h3><em>Request to hangout with your friend!</em></h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-4">
+        <%= cl_image_tag profile.photo.key %>
+        <%= profile.name %>
+        <%= profile.age %>
+        <%= profile.gender %>
+        <%= profile.interest %>
+        <%= profile.average_rating %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
