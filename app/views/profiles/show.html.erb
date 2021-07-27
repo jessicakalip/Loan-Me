@@ -8,15 +8,15 @@
 
 <div class="container">
   <div class="row">
+      <%= link_to "Go Back", profile_path %>
       <div class="col-4">
-        <%= cl_image_tag profile.photo.key %>
-        <%= profile.name %>
-        <%= profile.age %>
-        <%= profile.gender %>
-        <%= profile.interest %>
-        <%= profile.average_rating %>
+        <%= cl_image_tag @profile.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face%>
+        <%= @profile.name %>
+        <%= @profile.age %>
+        <%= @profile.gender %>
+        <%= @profile.interest %>
+        <%= @profile.average_rating %>
       </div>
-    <% end %>
   </div>
 </div>
 
