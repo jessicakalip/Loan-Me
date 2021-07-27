@@ -1,0 +1,12 @@
+<h1>Details</h1>
+
+<p><%= @hangout.profile.name %></p>
+<p><%= @hangout.status %></p>
+<p><%= @hangout.date %></p>
+<p><%= @hangout.time %></p>
+
+
+<% if @hangout.review != nil %>
+<p><%= @hangout.review.rating %></p>
+<p><%= @hangout.review.comment %></p>
+<% end %>
