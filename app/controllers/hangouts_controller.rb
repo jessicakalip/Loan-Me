@@ -1,5 +1,5 @@
 class HangoutsController < ApplicationController
-
+  before_action :set_hangout, only: [:show, :edit, :update]
   before_action :find_profile, only: [:create, :new]
 
   def index
@@ -8,8 +8,6 @@ class HangoutsController < ApplicationController
 
 
   def show
-    @id = params[:id]
-    @hangout = Hangout.find(@id)
   end
 
 
@@ -30,7 +28,20 @@ class HangoutsController < ApplicationController
     end
   end
 
+  def edit
+    @hangout = Hangout.find(params[:id])
+  end
+
+  def update
+    @hangout.update(hangout_params)
+    redirect_to hangout_path(@hangout)
+  end
+
   private
+  def set_hangout
+    @id = params[:id]
+    @hangout = Hangout.find(@id)
+  end
 
   def find_profile
     @profile = Profile.find(params[:profile_id])
