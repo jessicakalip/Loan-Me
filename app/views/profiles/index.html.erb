@@ -10,7 +10,11 @@
   <div class="row">
     <% @profiles.each do |profile| %>
       <div class="col-4">
-        <%= cl_image_tag profile.photo.key %>
+        <% if @profile.photo.attached? %>
+          <%= cl_image_tag profile.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+        <% else %>
+          <%= cl_image_tag "avatar_ivxvwp", width: 150, height: 150, crop: :thumb, gravity: :face %>
+        <% end %>
         <%= profile.name %>
         <%= link_to "See More", profile_path(profile) %>
       </div>
