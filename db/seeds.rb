@@ -26,7 +26,7 @@ puts "creating fake profiles..."
 User.all.sample(20).each do |user|
   profile = Profile.new(
              name: Faker::Name.name,
-             gender: Faker::Gender.binary_type,
+             gender: Profile::GENRES.sample,
              age: rand(18..40),
              interest: Faker::Hobby.activity,
              average_rating: rand(1.0..5.0).round(2),
@@ -38,11 +38,12 @@ User.all.sample(20).each do |user|
     status = future ? ["pending", "reject", "accept"].sample : "completed"
     puts "creating hangouts....."
     hangout = Hangout.new(
-               status: status,
-               date: date,
-               time: Time.now,
-               profile: profile,
-               user: User.all.sample)
+              status: status,
+              date: date,
+              time: Time.now,
+              profile: profile,
+              user: User.all.sample,
+              seed: true)
     hangout.save!
 
     if hangout.status == "completed"
