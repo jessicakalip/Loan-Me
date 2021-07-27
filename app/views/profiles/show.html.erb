@@ -1,0 +1,26 @@
+<div class="banner">
+  <div class="container m-5 p-5 ">
+      <h1><%= @profile.name %>'s Bio</h1>
+      <h3><em>Request to hangout with your friend!</em></h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <%= link_to "Go Back", profile_path %>
+      <div class="col-4">
+        <% if @profile.photo.attached? %>
+          <%= cl_image_tag @profile.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+        <% else %>
+          <%= cl_image_tag "avatar_ivxvwp", width: 150, height: 150, crop: :thumb, gravity: :face %>
+        <% end %>
+        <%= @profile.name %>
+        <%= @profile.age %>
+        <%= @profile.gender %>
+        <%= @profile.interest %>
+        <%= @profile.average_rating %>
+      </div>
+  </div>
+
+</div>

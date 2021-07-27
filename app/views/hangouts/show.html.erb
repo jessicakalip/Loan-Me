@@ -1,12 +1,49 @@
-<h1>Details</h1>
+<div class="banner">
+  <div class="container m-5 p-5 ">
+      <h1>Hangout Dashboard</h1>
+      <h3><em>Overview of past and present hangouts</em></h3>
+    </div>
+  </div>
+</div>
 
-<p><%= @hangout.profile.name %></p>
-<p><%= @hangout.status %></p>
-<p><%= @hangout.date %></p>
-<p><%= @hangout.time %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <h2>Hangout with</h2>
+      <% @hangouts.each do |hangout| %>
+        <p><%= hangout.profile.name %></p>
+      <% end %>
+    </div>
 
+    <div class="col-2">
+      <h2>Hangout Status</h2>
+      <% @hangouts.each do |hangout| %>
+        <p><%= hangout.status %></p>
+      <% end %>
+    </div>
 
-<% if @hangout.review != nil %>
-<p><%= @hangout.review.rating %></p>
-<p><%= @hangout.review.comment %></p>
-<% end %>
+    <div class="col-2">
+      <h2>Hangout Date</h2>
+      <% @hangouts.each do |hangout| %>
+        <p><%= hangout.date %></p>
+      <% end %>
+    </div>
+
+    <div class="col-2">
+      <h2>Hangout Time</h2>
+      <% @hangouts.each do |hangout| %>
+        <p><%= hangout.time %></p>
+      <% end %>
+    </div>
+
+    <div class="col-2">
+      <h2>Hangout Review</h2>
+      <% @hangouts.each do |hangout| %>
+        <% if hangout.review != nil %>
+          <p><%= hangout.review.rating %></p>
+          <p><%= hangout.review.comment %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
