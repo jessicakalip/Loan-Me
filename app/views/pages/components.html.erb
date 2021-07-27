@@ -1,0 +1,160 @@
+<!-- <h1>Pages#home</h1>
+  <p>Find me in app/views/pages/home.html.erb</p> -->
+  <!-- # NAVBAR -->
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <a class="navbar-brand" href="#">
+      <img src="https://i.ibb.co/C8pt2Gt/7117708842ad40a996cb95e93715bf9b-1.png" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Hangout Requests</a>
+        </li>
+        <li class="nav-item dropdown">
+          <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+    <div class="container">
+      <h1><strong>Loan Me</strong></h1>
+      <p>For the lonely.</p>
+      <a class="btn btn-success" href="#">Sign Up Now!</a>
+    </div>
+  </div>
+
+  <!-- FLASHES -->
+  <h2>FLASHES</h2>
+  <p>As seen in the bottom right corner. Cycle through them :)</p>
+  <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+    <span><strong>Yay!</strong> 🎉 you successfully signed in to our service.</span>
+    <a data-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+
+  <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+    <span><strong>Mmh</strong> 🤔 seems like you don't have <a href="#">profile picture</a> yet.</span>
+    <a data-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+
+  <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
+    <span><strong>Oops!</strong> 😱 a problem has occurred while processing your booking.</span>
+    <a data-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+
+  <!-- Avatars -->
+  <h2>AVATARS</h2>
+  <img class="avatar" alt="avatar" src="https://qph.fs.quoracdn.net/main-qimg-342cdbdeae5280924912b8551e49a7c6" />
+  <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+  <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+  <img class="avatar-square" alt="avatar-square" src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+
+  <!-- SEARCH BAR -->
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-6">
+        <h2>SEARCH BAR</h2>
+        <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+          <div class="search-form-control form-group">
+            <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+            <button name="button" type="submit" class="btn btn-success">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+        </form>
+        <hr>
+
+        <!-- FRIEND CARDS -->
+        <h2>FRIEND CARDS</h2>
+        <% @profiles.each do |profile| %>
+          <%= link_to "#", class: "card-link" do %>
+          <div class="card-friend">
+            <% if profile.photo.attached? %>
+              <%= cl_image_tag profile.photo.key %>
+            <% else %>
+              <%= cl_image_tag "avatar_ivxvwp" %>
+            <% end %>
+            <div class="card-friend-infos">
+              <h2><%= profile.name %>
+                <% if profile.gender == "female" %>
+                  <i class="fas fa-venus"></i>
+                <% elsif profile.gender == "male" %>
+                  <i class="fas fa-mars"></i>
+                <% else %>
+                  <i class="fas fa-transgender-alt"></i>
+                <% end %>
+              <%= profile.age %></h2>
+              <p>Interests: <%= profile.interest %></p>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+
+        <!-- Hangout Cards -->
+        <h2>HANGOUT CARDS</h2>
+        <% @hangouts.each do |hangout| %>
+          <%= link_to "#", class: "card-link" do %>
+          <div class="card-friend">
+            <% if hangout.profile.photo.attached? %>
+              <%= cl_image_tag hangout.profile.photo.key %>
+            <% else %>
+              <%= cl_image_tag "avatar_ivxvwp" %>
+            <% end %>
+            <div class="card-friend-infos">
+              <h2><%= hangout.profile.name %>
+                <% if hangout.profile.gender == "female" %>
+                  <i class="fas fa-venus"></i>
+                <% elsif hangout.profile.gender == "male" %>
+                  <i class="fas fa-mars"></i>
+                <% else %>
+                  <i class="fas fa-transgender-alt"></i>
+                <% end %>
+              <%= hangout.profile.age %></h2>
+              <p><%= hangout.date %> - <%= hangout.time %></p>
+              <p>Status: <%= hangout.status %></p>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+      Don't be lonely, choose Loan Me!
+    </div>
+  </div>
+

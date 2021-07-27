@@ -7,6 +7,7 @@ class Hangout < ApplicationRecord
   # validates :date, comparison: { greater_than: Date.today }
   validates :time, presence: true
 
+
   validates :date, presence: true
   validate :date_future?
   before_create :set_default_status
