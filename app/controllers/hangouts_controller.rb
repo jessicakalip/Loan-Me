@@ -21,10 +21,12 @@ class HangoutsController < ApplicationController
     @hangout = Hangout.new(hangout_params)
     # link the bookmark to the restaurant
     @hangout.profile = @profile
+    @hangout.user = current_user
     if @hangout.save
       redirect_to profile_path(@profile)
+      flash[:notice] = 'Your booking has benn saved!'
     else
-      render :new
+      render 'profiles/show'
     end
   end
 
