@@ -13,7 +13,7 @@
     <h5>Hangout status</h5>
     <%= @hangout.status %>
     <h5>Hangout details</h5>
-    <%= @hangout.date.strftime("%b %d, %Y") %> 
+    <%= @hangout.date.strftime("%b %d, %Y") %>
     <%= @hangout.time.strftime("%I:%M %p") %>
     <h5>Hangout Review</h5>
     <%= @hangout.review.rating %>
@@ -21,3 +21,8 @@
   </div>
 </div>
 
+<%= simple_form_for [:hangout, :review] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating %>
+  <%= f.submit %>
+<% end %>
