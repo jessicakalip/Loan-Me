@@ -4,15 +4,15 @@
   </div>
 </div>
 
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-6">
       <h1>Edit your Hangout booking</h1>
         <%= simple_form_for [@profile, @hangout] do |f| %>
-        <%= f.input :date, html5: true, input_html: {min: Date.today} %>
-        <%= f.input :time %>
-        <%= f.input :status, collection: ["reject", "accept", "completed"] %>
-        <%= f.submit "Edit",  class: "btn btn-primary" %>
+      <%= f.input :date, html5: true, input_html: {min: Date.today} %>
+      <%= f.input :time %>
+      <%= f.submit "Edit",  class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>

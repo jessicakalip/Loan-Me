@@ -53,6 +53,6 @@ class HangoutsController < ApplicationController
   end
 
   def hangout_params
-    params.require(:hangout).permit(:date, :time)
+    params.require(:hangout).permit(:date, :time, :status)
   end
 end

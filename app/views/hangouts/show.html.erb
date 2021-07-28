@@ -5,8 +5,15 @@
 </div>
 
 <div class="container">
+
+  <div class="row">
+    <% if current_user == @hangout.user %>
     <h5>You are hanging out with:</h5>
     <%= @hangout.profile.name %>
+    <% else %>
+    <h5>Your request from:</h5>
+    <%= @hangout.user.email %>
+    <% end %>
     <h5>Hangout status</h5>
     <%= @hangout.status %>
     <h5>Hangout details</h5>
@@ -23,4 +30,25 @@
         <%= f.submit %>
       <% end %>
     <% end %>
+   </div>
+
+  <div class="py-4">
+    <% if current_user == @hangout.user %>
+      <%= link_to 'Edit', edit_hangout_path(@hangout), class: "btn btn-primary" %>
+      <%= link_to "Delete",
+                      hangout_path(@hangout),
+                      class: "btn btn-warning",
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+      <%= link_to 'Complete', hangout_path(@hangout, hangout: {status: "completed"}), method: :patch, class: "btn btn-info", data: { confirm: "Are you sure?" }%>
+      <% elsif  current_user.profile == @hangout.profile && @hangout.status != "completed" %>
+      <%= link_to 'Accept', hangout_path(@hangout, hangout: {status: "accepted"}), method: :patch, class: "btn btn-success" %>
+      <%= link_to 'Reject', hangout_path(@hangout, hangout: {status: "rejected"}), method: :patch, class: "btn btn-danger" %>
+      <% elsif @hangout.status == "completed" %>
+      <h3>Your request is completed!</h3>
+      <% end %>
+      <%= link_to 'Back', dashboard_path, class: "btn btn-info" %>
+  </div>
+
 </div>
+
