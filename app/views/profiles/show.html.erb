@@ -7,31 +7,45 @@
 </div>
 
 <div class="container">
-  <div class="row">
-      <%= link_to "Go Back", profiles_path %>
-      <div class="col-4">
-        <% if @profile.photo.attached? %>
-          <%= cl_image_tag @profile.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
-        <% else %>
-          <%= cl_image_tag "avatar_ivxvwp", width: 150, height: 150, crop: :thumb, gravity: :face %>
-        <% end %>
-        <%= @profile.name %>
-        <%= @profile.age %>
-        <%= @profile.gender %>
-        <%= @profile.interest %>
-        <%= @profile.average_rating %>
+  <div class="row justify-content-end">
+    <%= link_to "Go Back", profiles_path, class: "btn btn-warning mb-5" %>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-8">
+      <div class="row justify-content-center align-items-end mb-5 ">
+        <div class="col-6">
+          <% if @profile.photo.attached? %>
+            <%= cl_image_tag @profile.photo.key, width: 300, height: 300, crop: :thumb, gravity: :face %>
+          <% else %>
+            <%= cl_image_tag "avatar_ivxvwp", width: 300, height: 300, crop: :thumb, gravity: :face %>
+          <% end %>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li><h5>Name: <%= @profile.name %></h5></li>
+            <li><h5>Age: <%= @profile.age %></h5></li>
+            <li><h5>Gender: <%= @profile.gender %></h5></li>
+            <li><h5>Interests: <%= @profile.interest %></h5></li>
+            <li><h5>Rating: <%= @profile.average_rating %></h5></li>
+          </ul>
+          <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-success" %>
+          <%= link_to "Delete Profile", profile_path(@profile), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        </div>
       </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+      <h3>Book a new Hangout</h3>
+      <%= simple_form_for [@profile, @hangout] do |f| %>
+        <%= f.input :date, html5: true, input_html: {min: Date.today} %>
+        <%= f.input :time %>
+        <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
 
-
-<h3>Book a new Hangout</h3>
-<%= simple_form_for [@profile, @hangout] do |f| %>
-      <%= f.input :date, html5: true, input_html: {min: Date.today} %>
-      <%= f.input :time %>
-      <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
-      <% end %>
 
 
 
