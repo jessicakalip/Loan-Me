@@ -1,25 +1,28 @@
 <div class="banner">
   <div class="container m-5 p-5 ">
-      <h1>Hangout Dashboard</h1>
-      <h3><em>Overview of past and present hangouts</em></h3>
+      <h1>Hangout details</h1>
+      <h3><em>Here is the details of your hangout !</em></h3>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="row">
     <h5>You are hanging out with:</h5>
     <%= @hangout.profile.name %>
     <h5>Hangout status</h5>
     <%= @hangout.status %>
     <h5>Hangout details</h5>
-    <%= @hangout.date.strftime("%b %d, %Y") %> 
+    <%= @hangout.date.strftime("%b %d, %Y") %>
     <%= @hangout.time.strftime("%I:%M %p") %>
-    <% if @hangout.review != nil %>
-    <h5>Hangout Review</h5>
-    <%= @hangout.review.rating %>
-    <%= @hangout.review.comment %>
+    <% if @hangout.review && @hangout.review.persisted? %>
+      <h5>Hangout Review</h5>
+      <%= @hangout.review.rating %>
+      <%= @hangout.review.comment %>
+    <% else %>
+      <%= simple_form_for [@hangout, @review] do |f| %>
+        <%= f.input :comment %>
+        <%= f.input :rating, collection: 1..5 %>
+        <%= f.submit %>
+      <% end %>
     <% end %>
-  </div>
 </div>
-
