@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @hangouts = Hangout.where(user: @current_user)
+    @hangouts = Hangout.where(user: current_user)
   end
 
   def components

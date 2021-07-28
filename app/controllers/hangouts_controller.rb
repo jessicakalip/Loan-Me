@@ -1,5 +1,5 @@
 class HangoutsController < ApplicationController
-  before_action :set_hangout, only: [:show, :edit, :update]
+  before_action :set_hangout, only: [:show, :edit, :update, :destroy]
   before_action :find_profile, only: [:create, :new]
 
   def index
@@ -7,6 +7,7 @@ class HangoutsController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -32,10 +33,16 @@ class HangoutsController < ApplicationController
 
   def update
     @hangout.update(hangout_params)
-    redirect_to hangout_path(@hangout)
+    redirect_to dashboard_path
+  end
+
+  def destroy
+    @hangout.destroy
+    redirect_to dashboard_path
   end
 
   private
+
   def set_hangout
     @id = params[:id]
     @hangout = Hangout.find(@id)
