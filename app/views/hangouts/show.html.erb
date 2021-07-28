@@ -35,9 +35,11 @@
                 method: :delete,
                 data: { confirm: "Are you sure?" } %>
 <%= link_to 'Complete', hangout_path(@hangout, hangout: {status: "completed"}), method: :patch, class: "btn btn-info", data: { confirm: "Are you sure?" }%>
-<% elsif  current_user.profile == @hangout.profile%>
+<% elsif  current_user.profile == @hangout.profile && @hangout.status != "completed" %>
 <%= link_to 'Accept', hangout_path(@hangout, hangout: {status: "accepted"}), method: :patch, class: "btn btn-success" %>
 <%= link_to 'Reject', hangout_path(@hangout, hangout: {status: "rejected"}), method: :patch, class: "btn btn-danger" %>
+<% elsif @hangout.status == "completed" %>
+<h3>Your request is completed!</h3>
 <% end %>
 <%= link_to 'Back', dashboard_path, class: "btn btn-info" %>
   </div>
