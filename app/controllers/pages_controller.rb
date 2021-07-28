@@ -5,7 +5,10 @@ class PagesController < ApplicationController
 
   def dashboard
     @hangouts = Hangout.where(user: current_user)
+    @requests = Hangout.where(profile: current_user.profile)
   end
+
+
 
   def components
     @profiles = Profile.all.sample(6)

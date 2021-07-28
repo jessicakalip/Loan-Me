@@ -3,6 +3,5 @@
 <%= simple_form_for [@profile, @hangout] do |f| %>
       <%= f.input :date, html5: true, input_html: {min: Date.today} %>
       <%= f.input :time %>
-      <%= f.input :status, collection: ["reject", "accept", "completed"] %>
       <%= f.submit "Edit",  class: "btn btn-primary" %>
       <% end %>
