@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>LoanMe</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>LoanMe</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-  </head>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+</head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <%= link_to image_tag("https://i.ibb.co/C8pt2Gt/7117708842ad40a996cb95e93715bf9b-1.png", border: 0), {action: 'home', controller: 'pages'}, {class: 'navbar-brand'} %>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <% if current_user.profile.photo.attached? %>
+          <%= cl_image_tag current_user.profile.photo.key, id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true"}, aria: {expanded: "false"}, class: "avatar dropdown-toggle"%>
+          <% else %>
+          <%= cl_image_tag "avatar_ivxvwp", id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true"}, aria: {expanded: "false"}, class: "avatar dropdown-toggle"%>
+          <% end %>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "My Hangouts", dashboard_path(tab: "hangout"), class: "dropdown-item" %>
+            <%= link_to "My Requests", dashboard_path(tab: "request"), class: "dropdown-item" %>
+            <%= link_to "Friend Profile", dashboard_path, class: "dropdown-item" %>
+            <%= link_to "Account", dashboard_path, class: "dropdown-item" %>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+
+
+          </div>
+        </li>
+      </ul>
+      <a href="#"></a>
+    </div>
+  </div>
+  <!-- END NAVBAR -->
+  <%= yield %>
+</body>
 </html>
