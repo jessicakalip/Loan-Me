@@ -7,7 +7,7 @@ class HangoutsController < ApplicationController
   end
 
   def show
-
+    @review = Review.new if @hangout.review.nil?
   end
 
   def new
