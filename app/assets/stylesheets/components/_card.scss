@@ -24,6 +24,15 @@
   }
 }
 
+.hangouts-grey {
+  color: rgb(40,40,40);
+  &:hover {
+    text-decoration: none;
+    background: lightgrey;
+    transition: .5s;
+  }
+}
+
 .card-friend img {
   height: 100%;
   width: 120px;
