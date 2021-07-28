@@ -1,9 +1,22 @@
-<h1>Edit your Profile</h1>
+<div class="banner">
+  <div class="container m-5 p-5 ">
+      <h1>Edit your profile</h1>
+      <h3><em>First impressions matter!</em></h3>
+    </div>
+  </div>
+</div>
 
-<%= simple_form_for @profile do |f| %>
-  <%= f.input :name %>
-  <%= f.input :age %>
-  <%= f.input :gender, as: :select, collection: Profile::GENRES %>
-  <%= f.input :interest, label: "Add your interests here" %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center mb-5">
+    <div class="col-6">
+      <%= simple_form_for @profile do |f| %>
+        <%= f.input :name %>
+        <%= f.input :age %>
+        <%= f.input :gender, as: :select, collection: Profile::GENRES %>
+        <%= f.input :interest, label: "Add your interests here" %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
