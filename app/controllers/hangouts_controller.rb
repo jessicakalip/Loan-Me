@@ -1,6 +1,6 @@
 class HangoutsController < ApplicationController
-  before_action :set_hangout, only: [:show, :edit, :update, :destroy]
-  before_action :find_profile, only: [:create, :new]
+  before_action :set_hangout, only: %i[show edit update destroy]
+  before_action :find_profile, only: %i[create new]
 
   def index
     @hangouts = Hangout.all
@@ -20,7 +20,7 @@ class HangoutsController < ApplicationController
     @hangout.profile = @profile
     @hangout.user = current_user
     if @hangout.save
-      redirect_to profile_path(@profile)
+      redirect_to hangout_path(@hangout)
       flash[:notice] = 'Your booking has benn saved!'
     else
       render 'profiles/show'
