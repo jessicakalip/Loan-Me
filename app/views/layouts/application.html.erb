@@ -21,7 +21,7 @@
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <% if current_user.profile && current_user.photo.attached? %>
+            <% if current_user.profile && current_user.profile.photo.attached? %>
             <%= cl_image_tag current_user.profile.photo.key, id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true"}, aria: {expanded: "false"}, class: "avatar dropdown-toggle"%>
             <% else %>
             <%= cl_image_tag "avatar_ivxvwp", id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true"}, aria: {expanded: "false"}, class: "avatar dropdown-toggle"%>
@@ -30,8 +30,12 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "My Hangouts", dashboard_path(tab: "hangout"), class: "dropdown-item" %>
               <%= link_to "My Requests", dashboard_path(tab: "request"), class: "dropdown-item" %>
-              <%= link_to "Friend Profile", dashboard_path, class: "dropdown-item" %>
-              <%= link_to "Account", dashboard_path, class: "dropdown-item" %>
+              <% if !current_user.profile.nil? %>
+                <%= link_to "Friend Profile", profile_path(current_user.profile), class: "dropdown-item" %>
+              <% else %>
+                <%= link_to "Create Friend Profile", new_profile_path, class: "dropdown-item" %>
+              <% end %>
+              <%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
