@@ -15,9 +15,11 @@
     <h5>Hangout details</h5>
     <%= @hangout.date.strftime("%b %d, %Y") %>
     <%= @hangout.time.strftime("%I:%M %p") %>
+    <% if @hangout.review != nil %>
     <h5>Hangout Review</h5>
     <%= @hangout.review.rating %>
     <%= @hangout.review.comment %>
+    <% end %>
   </div>
 </div>
 

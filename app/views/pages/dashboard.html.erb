@@ -37,6 +37,16 @@
     <div class="col-3">
       <p><%= hangout.date.strftime("%b %d, %Y") %> | <%= hangout.time.strftime("%I:%M %p") %></p>
     </div>
+    <div>
+      <p><%= link_to 'Edit', edit_hangout_path(hangout), class: "btn btn-primary" %></p>
+    </div>
+    <div class="mx-3">
+      <p><%= link_to "Delete",
+            hangout_path(hangout),
+            class: "btn btn-info",
+            method: :delete,
+            data: { confirm: "Are you sure?" } %></p>
+    </div>
     </div>
   <% end %>
 </div>
