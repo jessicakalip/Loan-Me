@@ -18,8 +18,6 @@
           <% end %>
           <%= profile.name %>
           <%= link_to "See More", profile_path(profile) %>
-          <%= link_to "Edit Profile", edit_profile_path(profile) %>
-          <%= link_to "Delete Profile", profile_path(profile), method: :delete, data: {confirm: "Are you sure?"} %>
         </div>
       </div>
     <% end %>
