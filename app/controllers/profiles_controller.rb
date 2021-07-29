@@ -12,6 +12,11 @@ class ProfilesController < ApplicationController
     else
       @profiles = Profile.all
     end
+    @markers = @profiles.geocoded.map do |profile|
+     {
+       lat: profile.latitude,
+       lng: profile.longitude
+     }
   end
 
   def show

@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 2021_07_29_042718) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.text "bio"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
