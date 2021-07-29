@@ -2,6 +2,12 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[show destroy edit update]
   def index
     @profiles = Profile.all
+    if params[:address] == "All"
+      @profiles = Profile.all
+    elsif params[:address].present?
+      @profiles = @profiles.near(params[:address])
+    end
+
     @profiles = @profiles.where(gender: params[:gender]) if params[:gender].present?
 
     if params[:min_age].present? && params[:max_age].present?
@@ -12,8 +18,15 @@ class ProfilesController < ApplicationController
       @profiles = @profiles.where("profiles.age < #{params[:max_age]}")
     end
 
-    # @profiles = Profile.where(address: params[:address])
-    # @profiles = @profiles.where(interest: params[:interests])
+    if params[:interests].present?
+      params[:interests].each do |interest|
+        profile_interest = @profiles.each do |profile|
+          profile.interest.split(" ")
+        end
+        @profiles if profile_interest.include?(interest)
+      end
+    end
+
     @markers = @profiles.geocoded.map do |profile|
       {
         lat: profile.latitude,
