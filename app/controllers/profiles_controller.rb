@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @hangout = Hangout.new
+    @hangout.profile = @profile
   end
 
   def new

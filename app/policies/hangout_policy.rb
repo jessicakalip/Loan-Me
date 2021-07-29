@@ -4,4 +4,20 @@ class HangoutPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def show?
+    true
+  end
+
+  def create?
+    !(record.profile == user.profile)
+  end
+
+  def update?
+    record.user == user
+  end
+
+  def destroy?
+    record.user == user || record.profile == user.profile
+  end
 end

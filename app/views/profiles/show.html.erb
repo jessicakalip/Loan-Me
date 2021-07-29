@@ -42,13 +42,15 @@
       </div>
     </div>
 
-    <div class="col-sm-12 col-md-4">
-      <h3>Book a new Hangout</h3>
-      <%= simple_form_for [@profile, @hangout] do |f| %>
-        <%= f.input :date, html5: true, input_html: {min: Date.today} %>
-        <%= f.input :time %>
-        <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
-      <% end %>
-    </div>
+    <% if policy(@hangout).create?%>
+      <div class="col-sm-12 col-md-4">
+        <h3>Book a new Hangout</h3>
+        <%= simple_form_for [@profile, @hangout] do |f| %>
+          <%= f.input :date, html5: true, input_html: {min: Date.today} %>
+          <%= f.input :time %>
+          <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
