@@ -1,10 +1,17 @@
-<div class="banner">
-  <div class="container m-5 p-5 ">
-      <h1><%= @profile.name %>'s Bio</h1>
-      <h3><em>Request to hangout with your friend!</em></h3>
+<div class="small-banner align-items-center" style="background-color: #74BEB8;">
+    <div class="container">
+      <div class="row">
+        <div class="justify-content-start">
+          <% if @profile.photo.attached? %>
+            <%= cl_image_tag @profile.photo.key, class: "avatar-large" %>
+          <% else %>
+            <%= cl_image_tag "avatar_ivxvwp", class: "avatar-large" %>
+          <% end %>
+          <h1 class="small-banner-font"></div><strong><%= @profile.name %>'s Bio</strong></h1>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
 <div class="container">
   <div class="row justify-content-end">
