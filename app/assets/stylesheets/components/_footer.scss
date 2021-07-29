@@ -4,8 +4,11 @@
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  padding: 0px 50px;
+  padding: 0px 25px;
   color: rgb(40,40,40);
+  position: sticky;
+  bottom:0;
+  width:100%;
 }
 .footer-links {
   display: flex;
