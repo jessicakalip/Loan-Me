@@ -7,20 +7,66 @@
 </div>
 
 <div class="container">
-  <div class="row justify-content-center align-items-center">
-    <% @profiles.each do |profile| %>
-      <div class="col-4">
-        <div class="row d-flex flex-column m-3">
-          <% if profile.photo.attached? %>
-            <%= cl_image_tag profile.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
-          <% else %>
-            <%= cl_image_tag "avatar_ivxvwp", width: 150, height: 150, crop: :thumb, gravity: :face %>
-          <% end %>
-          <%= profile.name %>
-          <%= link_to "See More", profile_path(profile) %>
+  <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
+    <%= f.label :address %>
+    <%= f.select :address, ['Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'] %>
+    <%= f.label :gender %><br>
+    <%= f.select :gender, Profile::GENRES, :prompt => 'Select One' %>
+    <%= text_field_tag :min_age,
+      params[:min_age],
+      class: "form-control",
+      placeholder: "Choose your friend's min age'"%>
+    <%= text_field_tag :max_age,
+      params[:max_age],
+      class: "form-control",
+      placeholder: "Choose your friend's max age"%>
+    <h5>Interests:</h5>
+    <label for="">Business</label>
+    <input type="checkbox" name="interests[]", value="Business">
+    <label for="">Film</label>
+    <input type="checkbox" name="interests[]", value="Film">
+    <label for="">Family</label>
+    <input type="checkbox" name="interests[]", value="Family">
+    <label for="">Fitness</label>
+    <input type="checkbox" name="interests[]", value="Fitness">
+    <label for="">Food</label>
+    <input type="checkbox" name="interests[]", value="Food">
+    <label for="">Art</label>
+    <input type="checkbox" name="interests[]", value="Art">
+    <label for="">Music</label>
+    <input type="checkbox" name="interests[]", value="Music">
+    <label for="">Shopping</label>
+    <input type="checkbox" name="interests[]", value="Shopping">
+    <label for="">Sports</label>
+    <input type="checkbox" name="interests[]", value="Sports">
+    <label for="">Tech</label>
+    <input type="checkbox" name="interests[]", value="Tech">
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div class="page-container d-flex">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <% @profiles.each do |profile| %>
+        <div class="col-4">
+          <div class="row d-flex flex-column m-3">
+            <% if profile.photo.attached? %>
+              <%= cl_image_tag profile.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+            <% else %>
+              <%= cl_image_tag "avatar_ivxvwp", width: 150, height: 150, crop: :thumb, gravity: :face %>
+            <% end %>
+            <%= profile.name %>
+            <%= link_to "See More", profile_path(profile) %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
+  <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
