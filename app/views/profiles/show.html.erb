@@ -1,9 +1,13 @@
-<div class="banner">
-  <div class="container m-5 p-5 ">
-      <h1><%= @profile.name %>'s Bio</h1>
-      <h3><em>Request to hangout with your friend!</em></h3>
-    </div>
+<div class="d-flex small-banner align-items-center" style="background-color: #74BEB8;">
+  <div class="row mx-3 justify-content-start align-items-end">
+    <% if @profile.photo.attached? %>
+      <%= cl_image_tag @profile.photo.key, class: "avatar-large" %>
+    <% else %>
+      <%= cl_image_tag "avatar_ivxvwp", class: "avatar-large" %>
+    <% end %>
+    <h1 class="px-2"><%= @profile.name %>'s Bio</h1>
   </div>
+
 </div>
 
 <div class="container">
@@ -17,13 +21,6 @@
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8">
       <div class="row justify-content-center align-items-end mb-5 ">
-        <div class="col-6">
-          <% if @profile.photo.attached? %>
-            <%= cl_image_tag @profile.photo.key, width: 300, height: 300, crop: :thumb, gravity: :face %>
-          <% else %>
-            <%= cl_image_tag "avatar_ivxvwp", width: 300, height: 300, crop: :thumb, gravity: :face %>
-          <% end %>
-        </div>
         <div class="col-6">
           <ul>
             <li><h5>Name: <%= @profile.name %></h5></li>
@@ -41,7 +38,6 @@
         </div>
       </div>
     </div>
-
     <% if policy(@hangout).create?%>
       <div class="col-sm-12 col-md-4">
         <h3>Book a new Hangout</h3>
