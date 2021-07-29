@@ -29,7 +29,7 @@ User.all.sample(20).each do |user|
              bio: Faker::TvShows::RickAndMorty.quote,
              gender: Profile::GENRES.sample,
              age: rand(18..40),
-             interest: Profile::INTERESTS.sample(4),
+             interest: Profile::INTERESTS.sample(4).join(" "),
              address: ['Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'].sample,
              average_rating: rand(1.0..5.0).round(2),
              user: user)
