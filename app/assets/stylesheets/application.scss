@@ -15,9 +15,11 @@
 // Various
 #page-container {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
+  padding-bottom: 50px;
 }
 
-#content-wrap {
-  padding-bottom: 50px;    /* Footer height */
+
+body {
+  color: $black;
 }

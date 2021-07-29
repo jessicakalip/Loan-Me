@@ -5,9 +5,8 @@
 
 <div class="banner">
   <div class="container m-5 p-5 ">
-      <h1>Hangout Dashboard</h1>
-      <h3><em>Overview of past and present hangouts</em></h3>
-    </div>
+    <h1>Hangout Dashboard</h1>
+    <h3><em>Overview of past and present hangouts</em></h3>
   </div>
 </div>
 
@@ -19,95 +18,82 @@
   <li class="nav-item" role="presentation">
     <a class="nav-link <%= "active" if params[:tab] == "request" %>" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="request" aria-selected="false">Requests</a>
   </li>
-
-
-
-
 </ul>
+
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane <%= params[:tab] == "hangout" || !params[:tab] ? "active" : "fade" %>" id="home" role="tabpanel" aria-labelledby="home-tab">
     <div class="container py-5">
-<div class="row">
-
-    <div class="col-3">
-      <h5>Friend</h5>
-    </div>
-
-    <div class="col-3">
-      <h5>Status</h5>
-    </div>
-
-    <div class="col-3">
-      <h5>Date/time</h5>
-    </div>
-
-    </div>
-  <% @hangouts.each do |hangout| %>
-  <%= link_to hangout_path(hangout), class: "hangouts-grey" do %>
       <div class="row">
-
-        <div class="col-3 d-flex">
-          <div>
-            <% if hangout.profile.photo.attached? %>
-              <%= cl_image_tag hangout.profile.photo.key, class: "avatar" %>
-            <% else %>
-               <%= cl_image_tag "avatar_ivxvwp", class: "avatar" %>
-            <% end %>
-          </div>
-          <div class="mx-3">
-            <p><%= hangout.profile.name %></p>
-          </div>
-
+        <div class="col-3">
+          <h5>Friend</h5>
         </div>
 
         <div class="col-3">
-          <p><%= hangout.status %></p>
+          <h5>Status</h5>
         </div>
 
         <div class="col-3">
-          <p><%= hangout.date.strftime("%b %d, %Y") %> | <%= hangout.time.strftime("%I:%M %p") %></p>
+          <h5>Date/time</h5>
         </div>
       </div>
+      <% @hangouts.each do |hangout| %>
+        <%= link_to hangout_path(hangout), class: "hangouts-grey" do %>
+          <div class="row">
+            <div class="col-3 d-flex">
+              <div>
+                <% if hangout.profile.photo.attached? %>
+                  <%= cl_image_tag hangout.profile.photo.key, class: "avatar" %>
+                <% else %>
+                   <%= cl_image_tag "avatar_ivxvwp", class: "avatar" %>
+                <% end %>
+              </div>
+              <div class="mx-3">
+                <p><%= hangout.profile.name %></p>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <p><%= hangout.status %></p>
+            </div>
+
+            <div class="col-3">
+              <p><%= hangout.date.strftime("%b %d, %Y") %> | <%= hangout.time.strftime("%I:%M %p") %></p>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-  <% end %>
     </div>
   </div>
   <div class="tab-pane <%= params[:tab] == "request" ? "active" : "fade" %>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <div class="container py-5">
-<div class="row">
-
-    <div class="col-3">
-      <h5>User</h5>
-    </div>
-
-    <div class="col-3">
-      <h5>Status</h5>
-    </div>
-
-    <div class="col-3">
-      <h5>Date/time</h5>
-    </div>
-
-    </div>
-  <% @requests.each do |request| %>
-  <%= link_to hangout_path(request), class: "hangouts-grey" do %>
       <div class="row">
-
         <div class="col-3">
-          <p><%= request.user.email %></p>
+          <h5>User</h5>
         </div>
 
         <div class="col-3">
-          <p><%= request.status %></p>
+          <h5>Status</h5>
         </div>
 
         <div class="col-3">
-          <p><%= request.date.strftime("%b %d, %Y") %> | <%= request.time.strftime("%I:%M %p") %></p>
+          <h5>Date/time</h5>
         </div>
-
       </div>
+      <% @requests.each do |request| %>
+        <%= link_to hangout_path(request), class: "hangouts-grey" do %>
+          <div class="row">
+            <div class="col-3">
+              <p><%= request.user.email %></p>
+            </div>
+            <div class="col-3">
+              <p><%= request.status %></p>
+            </div>
+            <div class="col-3">
+              <p><%= request.date.strftime("%b %d, %Y") %> | <%= request.time.strftime("%I:%M %p") %></p>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-  <% end %>
     </div>
   </div>
 </div>
