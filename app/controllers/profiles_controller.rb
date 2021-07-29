@@ -2,6 +2,13 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[show destroy edit update]
   def index
     @profiles = Profile.all
+
+     @markers = @profiles.geocoded.map do |profile|
+      {
+        lat: profile.latitude,
+        lng: profile.longitude
+      }
+    end
   end
 
   def show
