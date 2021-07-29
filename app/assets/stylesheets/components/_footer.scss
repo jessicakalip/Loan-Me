@@ -5,9 +5,8 @@
   justify-content: space-between;
   height: 50px;
   padding: 0px 25px;
-  color: rgb(40,40,40);
-  position: absolute;
-  bottom:0;
+  color: $black;
+  position: relative;
   width:100%;
 }
 .footer-links {
@@ -15,7 +14,7 @@
   align-items: center;
 }
 .footer-links a {
-  color: #74BEB8;
+  color: $green;
   opacity: 1;
   text-decoration: none;
   font-size: 24px;
@@ -24,7 +23,10 @@
 .footer-links a:hover {
   opacity: 0.15;
 }
-.footer .fa-heart {
-  color: #D23333;
-}
 
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+  .footer-copyright {
+    display: none;
+  }
+}
