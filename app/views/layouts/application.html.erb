@@ -21,7 +21,7 @@
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <% if current_user.profile && current_user.photo.attached? %>
+            <% if current_user.profile && current_user.profile.photo.attached? %>
             <%= cl_image_tag current_user.profile.photo.key, id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true"}, aria: {expanded: "false"}, class: "avatar dropdown-toggle"%>
             <% else %>
             <%= cl_image_tag "avatar_ivxvwp", id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true"}, aria: {expanded: "false"}, class: "avatar dropdown-toggle"%>
