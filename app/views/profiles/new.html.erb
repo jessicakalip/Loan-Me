@@ -9,7 +9,7 @@
       <%= f.input :name %>
       <%= f.input :age %>
       <%= f.input :gender, as: :select, collection: Profile::GENRES %>
-      <%= f.input :interest, label: "Add your interests here" %>
+      <%= f.input :interest, label: "Add your interests here", collection: Profile::INTERESTS %>
       <%= f.input :photo, as: :file %>
       <%= f.submit class: "btn btn-success"%>
       <% end %>
