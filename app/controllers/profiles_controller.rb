@@ -20,10 +20,10 @@ class ProfilesController < ApplicationController
 
     if params[:interests].present?
       params[:interests].each do |interest|
-        profile_interest = @profiles.each do |profile|
-          profile.interest.split(" ")
+        @profiles.each do |profile|
+          profile_interest = profile.interest.split(" ")
+          @profiles if profile_interest.include?(interest)
         end
-        @profiles if profile_interest.include?(interest)
       end
     end
 
