@@ -39,6 +39,11 @@
   }
 }
 
+.session p{
+  margin: 0;
+  padding: 1rem 1rem 0rem 1rem;
+}
+
 @media (max-width: 960px) {
   /* For a screen < 960px, this CSS will be read */
   .small-banner {
