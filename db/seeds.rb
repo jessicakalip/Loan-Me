@@ -26,9 +26,11 @@ puts "creating fake profiles..."
 User.all.sample(20).each do |user|
   profile = Profile.new(
              name: Faker::Name.name,
+             bio: Faker::TvShows::RickAndMorty.quote,
              gender: Profile::GENRES.sample,
              age: rand(18..40),
-             interest: Faker::Hobby.activity,
+             interest: Profile::INTERESTS.sample(4),
+             address: ['Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'].sample,
              average_rating: rand(1.0..5.0).round(2),
              user: user)
   profile.save!
