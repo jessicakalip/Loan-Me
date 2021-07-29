@@ -30,10 +30,10 @@
               <%= cl_image_tag "avatar_ivxvwp", id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true"}, aria: {expanded: "false"}, class: "avatar dropdown-toggle"%>
               <% end %>
 
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to "My Hangouts", dashboard_path(tab: "hangout"), class: "dropdown-item" %>
-                <%= link_to "My Requests", dashboard_path(tab: "request"), class: "dropdown-item" %>
-                <% if !current_user.profile.nil? %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "My Hangouts", dashboard_path(tab: "hangout"), class: "dropdown-item" %>
+              <%= link_to "My Requests", dashboard_path(tab: "request"), class: "dropdown-item" %>
+              <% if !policy(Profile).create? %>
                 <%= link_to "Friend Profile", profile_path(current_user.profile), class: "dropdown-item" %>
                 <% else %>
                 <%= link_to "Create Friend Profile", new_profile_path, class: "dropdown-item" %>

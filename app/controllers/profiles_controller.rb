@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[show destroy edit update]
   def index
-    @profiles = Profile.all
+    @profiles = policy_scope(Profile)
     @profiles = @profiles.where(gender: params[:gender]) if params[:gender].present?
 
     if params[:min_age].present? && params[:max_age].present?
@@ -25,14 +25,17 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @hangout = Hangout.new
+    @hangout.profile = @profile
   end
 
   def new
     @profile = Profile.new
+    authorize @profile
   end
 
   def create
     @profile = Profile.new(profile_params)
+    authorize @profile
     @profile.user = current_user
     if @profile.save
       redirect_to profile_path(@profile)
@@ -46,6 +49,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile.update(profile_params)
+    authorize @profile
     if @profile.save
       redirect_to profile_path(@profile)
     else
@@ -55,6 +59,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
+    authorize @profile
     redirect_to profiles_path
   end
 
@@ -66,5 +71,6 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @profile = Profile.find(params[:id])
+    authorize @profile
   end
 end
