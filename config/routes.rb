@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   get '/components', to: 'pages#components', as: :components
 
   resources :hangouts, only: [:show, :destroy, :edit, :update] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :destroy]
   end
 end

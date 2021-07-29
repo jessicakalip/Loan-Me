@@ -1,4 +1,4 @@
-class HangoutPolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -10,11 +10,7 @@ class HangoutPolicy < ApplicationPolicy
   end
 
   def create?
-    !(record.profile == user.profile)
-  end
-
-  def update?
-    record.user == user || record.profile == user.profile
+    record.user == user && record.hangout.status == "completed"
   end
 
   def destroy?

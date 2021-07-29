@@ -5,10 +5,6 @@ class ProfilePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    @profiles = policy_scope(Profile)
-  end
-
   def show?
     true
   end

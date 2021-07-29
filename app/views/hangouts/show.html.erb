@@ -23,7 +23,7 @@
       <h5>Hangout Review</h5>
       <%= @hangout.review.rating %>
       <%= @hangout.review.comment %>
-    <% else %>
+    <% elsif policy(@review).create? %>
       <%= simple_form_for [@hangout, @review] do |f| %>
         <%= f.input :comment %>
         <%= f.input :rating, collection: 1..5 %>
@@ -34,7 +34,7 @@
 
   <div class="py-4">
     <%# Update and complete button %>
-    <% if policy(@hangout).update? %>
+    <% if policy(@hangout).update? && current_user == @hangout.user %>
       <%= link_to 'Edit', edit_hangout_path(@hangout), class: "btn btn-primary" %>
       <% if @hangout.status != "pending" %>
         <%= link_to 'Complete',
@@ -52,7 +52,7 @@
                       data: { confirm: "Are you sure?" } %>
     <% end %>
     <%# Accept and Reject button %>
-    <% if  current_user.profile == @hangout.profile %>
+    <% if current_user.profile == @hangout.profile && @hangout.status == "pending" %>
       <%= link_to 'Accept',
                       hangout_path(@hangout, hangout: {status: "accepted"}),
                       method: :patch, class: "btn btn-success" %>

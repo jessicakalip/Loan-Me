@@ -7,7 +7,11 @@ class HangoutsController < ApplicationController
   end
 
   def show
-    @review = Review.new if @hangout.review.nil?
+    if @hangout.review.nil?
+      @review = Review.new
+      @review.hangout = @hangout
+      @review.user = @hangout.user
+    end
   end
 
   def new
