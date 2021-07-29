@@ -9,38 +9,24 @@
 <div class="container">
   <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
     <%= f.label :address %>
-    <%= f.select :address, ['Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'] %>
+    <%= f.select :address, ['All', 'Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'], selected: params[:address] %>
     <%= f.label :gender %><br>
-    <%= f.select :gender, Profile::GENRES, :prompt => 'Select One' %>
+    <%= f.select :gender, Profile::GENRES, :prompt => 'Select One', selected: params[:gender]%>
     <%= text_field_tag :min_age,
       params[:min_age],
       class: "form-control",
-      placeholder: "Choose your friend's min age'"%>
+      placeholder: "Choose your friend's min age'",
+      value: params[:min_age]%>
     <%= text_field_tag :max_age,
       params[:max_age],
       class: "form-control",
-      placeholder: "Choose your friend's max age"%>
+      placeholder: "Choose your friend's max age",
+      value: params[:max_age]%>
     <h5>Interests:</h5>
-    <label for="">Business</label>
-    <input type="checkbox" name="interests[]", value="Business">
-    <label for="">Film</label>
-    <input type="checkbox" name="interests[]", value="Film">
-    <label for="">Family</label>
-    <input type="checkbox" name="interests[]", value="Family">
-    <label for="">Fitness</label>
-    <input type="checkbox" name="interests[]", value="Fitness">
-    <label for="">Food</label>
-    <input type="checkbox" name="interests[]", value="Food">
-    <label for="">Art</label>
-    <input type="checkbox" name="interests[]", value="Art">
-    <label for="">Music</label>
-    <input type="checkbox" name="interests[]", value="Music">
-    <label for="">Shopping</label>
-    <input type="checkbox" name="interests[]", value="Shopping">
-    <label for="">Sports</label>
-    <input type="checkbox" name="interests[]", value="Sports">
-    <label for="">Tech</label>
-    <input type="checkbox" name="interests[]", value="Tech">
+    <% Profile::INTERESTS.each do |interest| %>
+      <label for=""><%=interest%></label>
+      <input type="checkbox" name="interests[]", value="<%=interest%>" <%= "checked" if params[:interests].present? && params[:interests].include?(interest)%>>
+    <% end %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
