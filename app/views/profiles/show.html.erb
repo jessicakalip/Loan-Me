@@ -8,7 +8,11 @@
 
 <div class="container">
   <div class="row justify-content-end">
-    <%= link_to "Go Back", profiles_path, class: "btn btn-warning mb-5" %>
+    <% if current_user.profile == @profile %>
+      <%= link_to "Dashboard", dashboard_path, class: "btn btn-warning mb-5" %>
+    <% else %>
+      <%= link_to "Search again", profiles_path, class: "btn btn-warning mb-5" %>
+    <% end %>
   </div>
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8">
@@ -28,24 +32,25 @@
             <li><h5>Interests: <%= @profile.interest %></h5></li>
             <li><h5>Rating: <%= @profile.average_rating %></h5></li>
           </ul>
+        <% if policy(@profile).edit?%>
           <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-success" %>
+        <% end %>
+        <% if policy(@profile).destroy?%>
           <%= link_to "Delete Profile", profile_path(@profile), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <% end %>
         </div>
       </div>
     </div>
 
-    <div class="col-sm-12 col-md-4">
-      <h3>Book a new Hangout</h3>
-      <%= simple_form_for [@profile, @hangout] do |f| %>
-        <%= f.input :date, html5: true, input_html: {min: Date.today} %>
-        <%= f.input :time %>
-        <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
-      <% end %>
-    </div>
+    <% if policy(@hangout).create?%>
+      <div class="col-sm-12 col-md-4">
+        <h3>Book a new Hangout</h3>
+        <%= simple_form_for [@profile, @hangout] do |f| %>
+          <%= f.input :date, html5: true, input_html: {min: Date.today} %>
+          <%= f.input :time %>
+          <%= f.submit "Send a hangout",  class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-
-
-
-
