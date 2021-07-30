@@ -11,6 +11,11 @@ class Hangout < ApplicationRecord
   validates :date, presence: true
   validate :date_future?, on: :create
   before_create :set_default_status
+
+  def seen!
+    update(seen: true)
+  end
+
   private
 
   def set_default_status
