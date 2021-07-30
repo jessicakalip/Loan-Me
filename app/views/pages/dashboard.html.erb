@@ -79,17 +79,18 @@
           <h5>Date/time</h5>
         </div>
       </div>
-      <% @requests.each do |request| %>
-        <%= link_to hangout_path(request), class: "hangouts-grey" do %>
+      <% @requests.each do |hangout| %>
+        <% hangout.seen! %>
+        <%= link_to hangout_path(hangout), class: "hangouts-grey" do %>
           <div class="row">
             <div class="col-3">
-              <p><%= request.user.email %></p>
+              <p><%= hangout.user.email %></p>
             </div>
             <div class="col-3">
-              <p><%= request.status %></p>
+              <p><%= hangout.status %></p>
             </div>
             <div class="col-3">
-              <p><%= request.date.strftime("%b %d, %Y") %> | <%= request.time.strftime("%I:%M %p") %></p>
+              <p><%= hangout.date.strftime("%b %d, %Y") %> | <%= hangout.time.strftime("%I:%M %p") %></p>
             </div>
           </div>
         <% end %>

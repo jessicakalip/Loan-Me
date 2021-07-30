@@ -11,9 +11,16 @@
       <li class="nav-item active">
         <%= link_to "Find Friends", profiles_path, class: "nav-link btn btn-success", id: "font-white" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Requests", profiles_path, class: "nav-link" %>
+
+
+      <li class="nav-item row mx-1 mr-2 align-items-center">
+        <%= link_to "Requests", dashboard_path(tab: "request"), class: "nav-link" %>
+          <% if @notification && @notification >= 1 %>
+            <span class="badge badge-danger" id="notification"><%= @notification %></span>
+          <% end %>
       </li>
+
+
       <% if user_signed_in? %>
       <li class="nav-item dropdown">
         <% if current_user.profile && current_user.profile.photo.attached? %>
