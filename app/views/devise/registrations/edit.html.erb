@@ -1,11 +1,12 @@
-<div class="banner">
-  <div class="container m-5 p-5 ">
-      <h1>Edit password for <%= @user.email%></h1>
+<div class="small-banner" style="background-color: #74BEB8;">
+  <div class="row">
+    <div class="container">
+        <h1>Edit password for <%= @user.email%></h1>
     </div>
   </div>
 </div>
 
-<div class="container">
+<div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-6">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -40,7 +41,7 @@
 
       #<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 
-      <%= link_to "Back", :back, class: "btn btn-warning mt-3" %>
+      <%= link_to "Back", :back, class: "btn btn-warning mt-3 mb-3" %>
     </div>
   </div>
 </div>
