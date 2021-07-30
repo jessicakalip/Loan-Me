@@ -1,7 +1,9 @@
 class Profile < ApplicationRecord
   GENRES = %w[male female other]
-  INTERESTS = ["Business", "Film", "Family", "Fitness", "Food", "Art", "Music", "Shopping", "Sports", "Tech",
-               "Banana"]
+
+
+  INTERESTS = ["Business", "Film", "Family", "Fitness", "Food", "Art", "Music", "Shopping", "Sports", "Tech"]
+
 
   has_one_attached :photo
   belongs_to :user
@@ -11,10 +13,6 @@ class Profile < ApplicationRecord
     in: GENRES,
     message: "%{value} is not a valid gender. (Male, female, other.)"
   }
-  # validates :interest, inclusion: {
-  #   in: INTERESTS,
-  #   message: "%{value} is not a valid interest."
-  # }
   has_many :hangouts, dependent: :destroy
   has_many :reviews, through: :hangouts
   geocoded_by :address

@@ -1,17 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :find_review, only: %(destroy create)
 
-  def new
-    @review = Review.new
-  end
-
   def create
     @review = Review.new(review_params)
-    @review.hangout = @hangout
+    @review.hangout_id = params[:hangout_id]
     @review.user = current_user
     authorize @review
     if @review.save
-      redirect_to hangout_path(@hangout)
+      redirect_to hangout_path(@review.hangout)
     else
       render "hangouts/show"
     end

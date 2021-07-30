@@ -2,7 +2,11 @@
     <div class="container">
       <h1><strong>Loan Me</strong></h1>
       <p>For the lonely.</p>
-      <%= link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-success" %>
+      <div class="session d-flex">
+        <%= link_to "Sign in", new_user_session_path, class: "btn btn-success" %>
+        <p>Or</p>
+        <%= link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-success" %>
+      </div>
     </div>
   </div>
 
