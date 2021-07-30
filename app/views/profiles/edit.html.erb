@@ -14,9 +14,9 @@
         <%= f.input :age %>
         <%= f.input :gender, as: :select, collection: Profile::GENRES %>
         <%= f.input :interest, label: "Add your interests here" %>
+        <%= f.input :photo, as: :file %>
         <%= f.submit %>
       <% end %>
     </div>
   </div>
 </div>
-
