@@ -34,14 +34,12 @@
 
   <div class="py-4">
     <%# Update and complete button %>
-    <% if policy(@hangout).update? && current_user == @hangout.user %>
+    <% if policy(@hangout).update? && current_user == @hangout.user && @hangout.status != "pending" && @hangout.status != "completed"%>
       <%= link_to 'Edit', edit_hangout_path(@hangout), class: "btn btn-primary" %>
-      <% if @hangout.status != "pending" %>
-        <%= link_to 'Complete',
-                      hangout_path(@hangout, hangout: {status: "completed"}),
-                      method: :patch, class: "btn btn-info",
-                      data: { confirm: "Are you sure?" }%>
-      <% end %>
+      <%= link_to 'Complete',
+                    hangout_path(@hangout, hangout: {status: "completed"}),
+                    method: :patch, class: "btn btn-info",
+                    data: { confirm: "Are you sure?" }%>
     <% end %>
     <%# Delete button %>
     <% if policy(@hangout).destroy? %>

@@ -10,7 +10,7 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def create?
-    !user.profile
+    !(user.profile && user.profile.persisted?)
   end
 
   def update?
