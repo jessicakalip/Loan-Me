@@ -27,6 +27,7 @@
 .hangouts-grey {
   color: rgb(40,40,40);
   &:hover {
+    color: #74BEB8;
     text-decoration: none;
     background: lightgrey;
     transition: .5s;
