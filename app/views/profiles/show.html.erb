@@ -26,7 +26,7 @@
             <li><h5>Name: <%= @profile.name %></h5></li>
             <li><h5>Age: <%= @profile.age %></h5></li>
             <li><h5>Gender: <%= @profile.gender %></h5></li>
-            <li><h5>Interests: <%= JSON.parse(@profile.interest).join(", ") %></h5></li>
+            <li><h5>Interests: <%= @profile.interest.gsub(/[",\[\]]/, "") %></h5></li>
             <li><h5>Rating: <%= @profile.average_rating %></h5></li>
           </ul>
         <% if policy(@profile).edit?%>
