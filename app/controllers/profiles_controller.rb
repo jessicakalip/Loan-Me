@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[show destroy edit update]
   def index
+
     @profiles = policy_scope(Profile)
     if params[:address] == "All"
       @profiles = policy_scope(Profile)
@@ -19,15 +20,19 @@ class ProfilesController < ApplicationController
     end
 
     if params[:interests].present?
-      params[:interests].each do |interest|
-        @profiles.each do |profile|
-          profile_interest = profile.interest.split(" ")
-          @profiles if profile_interest.include?(interest)
+      profiles_filter = []
+      @profiles.each do |profile|
+        profile_interest = profile.interest.split(" ")
+        params[:interests].each do |interest|
+
+          profiles_filter << profile if profile_interest.include?(interest)
         end
       end
+    @profiles = profiles_filter
+
     end
 
-    @markers = @profiles.geocoded.map do |profile|
+    @markers = @profiles.map do |profile|
       {
         lat: profile.latitude,
         lng: profile.longitude

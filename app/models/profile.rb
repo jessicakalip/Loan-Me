@@ -1,6 +1,9 @@
 class Profile < ApplicationRecord
   GENRES = %w[male female other]
+
+
   INTERESTS = ["Business", "Film", "Family", "Fitness", "Food", "Art", "Music", "Shopping", "Sports", "Tech"]
+
 
   has_one_attached :photo
   belongs_to :user
