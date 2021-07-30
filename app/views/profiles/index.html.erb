@@ -83,7 +83,7 @@
                   <i class="fas fa-transgender-alt"></i>
                 <% end %>
                 <%= profile.age %></h2>
-                <p>Interests: <%= profile.interest %></p>
+                <p>Interests: <%= profile.interest.gsub(/[",\[\]]/, "") %></p>
             </div>
           </div>
         <% end %>

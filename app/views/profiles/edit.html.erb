@@ -13,7 +13,8 @@
         <%= f.input :name %>
         <%= f.input :age %>
         <%= f.input :gender, as: :select, collection: Profile::GENRES %>
-        <%= f.input :interest, label: "Add your interests here" %>
+        <%#= f.input :interest, label: "Add your interests here" %>
+        <%= f.input :interest, :label => "Interests", :collection => Profile::INTERESTS, wrapper_html: { class: 'form-group' }, :as => :check_boxes, include_hidden: false, :input_html => {:multiple => true} %>
         <%= f.input :photo, as: :file %>
         <%= f.submit %>
       <% end %>

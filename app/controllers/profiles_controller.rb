@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[show destroy edit update]
   def index
-
     @profiles = policy_scope(Profile)
     if params[:address] == "All"
       @profiles = policy_scope(Profile)
@@ -24,11 +23,10 @@ class ProfilesController < ApplicationController
       @profiles.each do |profile|
         profile_interest = profile.interest.split(" ")
         params[:interests].each do |interest|
-
           profiles_filter << profile if profile_interest.include?(interest)
         end
       end
-    @profiles = profiles_filter
+      @profiles = profiles_filter
 
     end
 
@@ -84,7 +82,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:name, :age, :gender, :photo, interest: [])
+    params.require(:profile).permit(:name, :age, :gender, :address, :photo, interest: [])
   end
 
   def set_profile
