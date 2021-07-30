@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<div class="container mt-4">
+<div class="mt-4 mx-3">
   <h3>Search for friends</h3>
     <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
       <div class="product-search mb-3">
@@ -31,7 +31,7 @@
                 value: params[:min_age]%>
             </div>
           </div>
-          
+
         <div class="col-3">
           <div class="search-element mt-4">
             <%= text_field_tag :max_age,
@@ -91,7 +91,7 @@
     <% end %>
   </div>
   <div id="map"
-        class="results-map"
+        class="results-map mt-3"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
