@@ -1,11 +1,11 @@
-<div class="small-banner" style="background-color: #74BEB8;">
-  <div class="container">
+<div class="small-banner d-flex justify-content-between" style="background-color: #74BEB8;">
+  <div class="container margin">
       <h1>View Friends</h1>
-      <h3><em>Checkout all our amazing friends</em></h3>
+      <p><em><small>Checkout all our amazing friends</small></em></p>
   </div>
 </div>
 
-<div class="container">
+<div class="container mt-4">
   <h3>Search for friends</h3>
     <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
       <div class="product-search mb-3">
