@@ -1,35 +1,82 @@
-<div class="banner">
-  <div class="container m-5 p-5 ">
+<div class="small-banner" style="background-color: #74BEB8;">
+  <div class="container">
       <h1>View Friends</h1>
       <h3><em>Checkout all our amazing friends</em></h3>
-    </div>
   </div>
 </div>
 
 <div class="container">
-  <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
-    <%= f.label :address %>
-    <%= f.select :address, ['All', 'Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'], selected: params[:address] %>
-    <%= f.label :gender %><br>
-    <%= f.select :gender, Profile::GENRES, :prompt => 'Select One', selected: params[:gender]%>
-    <%= text_field_tag :min_age,
-      params[:min_age],
-      class: "form-control",
-      placeholder: "Choose your friend's min age'",
-      value: params[:min_age]%>
-    <%= text_field_tag :max_age,
-      params[:max_age],
-      class: "form-control",
-      placeholder: "Choose your friend's max age",
-      value: params[:max_age]%>
-    <h5>Interests:</h5>
-    <% Profile::INTERESTS.each do |interest| %>
-      <label for=""><%=interest%></label>
-      <input type="checkbox" name="interests[]", value="<%=interest%>" <%= "checked" if params[:interests].present? && params[:interests].include?(interest)%>>
+  <h3>Search for friends</h3>
+    <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
+      <div class="product-search mb-3">
+       <div class="row w-100">
+        <div class="col-3 pl-4">
+          <%= f.label :address, class: "search-label" %>
+          <div class="search-element">
+            <%= f.select :address, ['All', 'Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'], selected: params[:address], class: "search-input" %>
+          </div>
+        </div>
+          <div class="col-3">
+            <%= f.label :gender, class: "search-label" %>
+            <div class="search-element">
+              <%= f.select :gender, Profile::GENRES, :prompt => 'Select One', selected: params[:gender], class: "search-input"%>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="search-element mt-4">
+              <%= text_field_tag :min_age,
+                params[:min_age],
+                class: "search-input",
+                placeholder: "Min age",
+                value: params[:min_age]%>
+            </div>
+          </div>
+          
+        <div class="col-3">
+          <div class="search-element mt-4">
+            <%= text_field_tag :max_age,
+              params[:max_age],
+              class: "search-input",
+              placeholder: "Max age",
+              value: params[:max_age]%>
+          </div>
+        </div>
+       </div>
+        <div class="row w-100">
+          <div class="col-9 ml-2">
+            <h5 class="mb-0">Interests:</h5>
+            <div class="search-element flex-wrap">
+              <% Profile::INTERESTS.each do |interest| %>
+                <div class="d-flex m-0 align-items-center">
+                  <label for="" class="search-label mb-0 mx-2"><%=interest%></label>
+                  <input type="checkbox" name="interests[]" value="<%=interest%>" <%= "checked" if params[:interests].present? && params[:interests].include?(interest)%>>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <%= submit_tag "Search", class: "btn btn-success search-button" %>
+          </div>
+        </div>
+      </div>
     <% end %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
 </div>
+
+<%# 
+<form action="" method="get">
+  <div class="product-search">
+      <div class="search-element">
+        <label class="search-label">What are you looking for?</label>
+        <input class="search-input" type="text" autocomplete="on" placeholder="Product Name" name="query">
+      </div>
+      <div class="search-element">
+        <label class="search-label">Where are you looking?</label>
+        <input class="search-input" type="text" placeholder="City, State" class="" autocomplete="on" name="location">
+      </div>
+      <a type="submit" class="search-button">Search</a>
+  </div>
+</form> %>
+
 
 <div class="page-container d-flex">
   <div class="container">
