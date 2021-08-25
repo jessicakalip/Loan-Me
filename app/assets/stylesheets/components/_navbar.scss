@@ -1,12 +1,28 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+.nav-bar {
+  width: 100%;
+  padding: 32px 49px;
+  .drop-down {
+    font-size: 45px;
+  }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  .fa-caret-right {
+    color: $red;
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: bolder !important;
+  }
+
+  .content {
+    margin: 0;
+    padding: 0;
+  }
 }

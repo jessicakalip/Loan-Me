@@ -3,18 +3,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  height: 39px;
   padding: 0px 25px;
   color: $black;
   position: relative;
-  width:100%;
+  width: 100%;
 }
 .footer-links {
   display: flex;
   align-items: center;
 }
 .footer-links a {
-  color: $green;
+  color: $red;
   opacity: 1;
   text-decoration: none;
   font-size: 24px;
