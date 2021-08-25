@@ -1,10 +1,10 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@300&display=swap");
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
-
+$body-font: "Raleway", sans-serif;
+$headers-font: "Lobster", cursive;
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
@@ -14,3 +14,12 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+h1 {
+  font-family: "Lobster", cursive;
+  font-size: 74px;
+}
+
+p {
+  font-family: "Raleway", sans-serif;
+  font-size: 22px;
+}
