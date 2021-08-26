@@ -4,10 +4,16 @@
 
 const initLabel = () => {
   const tagAll = document.querySelectorAll('.tag')
+  // tagAll.forEach((tag) => {
+  //   tag.classList.remove("search-label");
+  //   tag.classList.add("search-select");
+  // });
   tagAll.forEach((tag) => {
-    tag.classList.remove("search-label");
-    tag.classList.add("search-select");
-  });
+    tag.addEventListener("click", (event) => {
+       // event.preventDefault();
+       event.currentTarget.classList.add("search-select");
+    });
+  })
 };
 
 
