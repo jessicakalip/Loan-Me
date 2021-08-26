@@ -45,7 +45,7 @@
                 <% Profile::INTERESTS.each do |interest| %>
                   <div class="d-flex m-0 align-items-center">
                     <label for="" class="search-label mb-2 mx-2"></label>
-                    <input type="button" name="interests[]" class="search-label mb-2 mx-2" value="<%=interest%>" <%= "checked" if params[:interests].present? && params[:interests].include?(interest)%>>
+                    <input type="submit" name="interests[]" class="tag search-label mb-2 mx-2" value="<%=interest%>" <%= "checked" if params[:interests].present? && params[:interests].include?(interest)%>>
                   </div>
                 <% end %>
               </div>
