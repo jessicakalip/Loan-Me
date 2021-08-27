@@ -31,9 +31,8 @@
 .hangouts-grey {
   color: rgb(40,40,40);
   &:hover {
-    color: #74BEB8;
+    color: $blue;
     text-decoration: none;
-    background: lightgrey;
     transition: .5s;
   }
 }
@@ -61,3 +60,17 @@
 .card-friend .card-friend-infos {
   padding: 16px;
 }
+
+.status-color-red {
+  color: $red;
+}
+
+.status-color-blue {
+  color: $blue;
+}
+
+.status-color-green {
+  color: $green;
+}
+
+

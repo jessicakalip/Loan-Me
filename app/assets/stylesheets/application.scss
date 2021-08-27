@@ -28,3 +28,33 @@ body {
 #font-white {
   color: white;
 }
+
+h1 {
+  font-size: 9vw;
+}
+
+p {
+  font-size: 2.5vw;
+}
+
+a {
+  font-size: 2.5vw;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 12vw
+  }
+  p {
+  font-size: 4vw;
+  }
+  a {
+  font-size: 4vw;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+ }
+
+

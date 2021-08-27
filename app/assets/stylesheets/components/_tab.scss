@@ -1,26 +1,26 @@
 .tabs-underlined {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   border-bottom: 0;
-  padding-left: 145px;
 }
 
 .tabs-underlined .tab-underlined {
-  color: black;
-  padding: 8px;
+  color: #000000;
+  padding: 2vw 10vw;
   margin: 8px 16px;
-  opacity: .4;
   cursor: pointer;
   text-decoration: none;
-  border-bottom: 4px solid transparent;
+  border: 1px solid #000000;
+  border-radius: 40px;
 }
 
 .tabs-underlined .tab-underlined.active {
-  opacity: 1;
-  border-bottom: 3px solid #74BEB8;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
+  border: 3.5px solid #000000;
+  color: #000000;
+  border-radius: 40px;
+  font-weight: 900;
+  background-color: #fff9f0;
 }
 
 .margin {
