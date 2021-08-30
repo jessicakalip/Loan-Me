@@ -44,7 +44,7 @@
                 <div class="bs-example flex-wrap">
                   <% Profile::INTERESTS.each do |interest| %>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                      <label class="btn btn-primary mb-2 mx-2">
+                      <label class="btn btn-success mb-2 mx-2">
                         <input type="checkbox" name="interests[]" class="mb-2 mx-2" autocomplete="off" value="<%=interest%>" <%= "checked" if params[:interests].present? && params[:interests].include?(interest)%>> <%= interest %>
                       </label>
                     </div>
