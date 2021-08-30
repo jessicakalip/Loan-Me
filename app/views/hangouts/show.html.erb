@@ -1,42 +1,56 @@
-<div class="p-2 ml-5 mt-4">
-  <h1 class="my-5">Hangout with</h1>
-  <h1 class="my-5 "><%= @hangout.profile.name %></h1>
-</div>
-<div class="small-banner d-flex justify-content-between" style="background-color: #74BEB8;">
-  <div class="container margin">
+
+<!-- Flex box containing Title and Avatar -->
+<div class="responsive-avatar-title">
+  <div class="ml-5 pl-4">
     <% if current_user == @hangout.user %>
-    <h1>You are hanging out with: <%= @hangout.profile.name %></h1>
+    <h1 >Hangout with</h1>
+    <h1 class="my-4"><%= @hangout.profile.name %></h1>
     <% else %>
-    <h1>Your request from: <%= @hangout.user.email %></h1>
+    <h1>Request from</h1>
+    <h1 class="my-4"><%= @hangout.user.email %></h1>
     <% end %>
   </div>
-   <div class="buttons">
-    <%# Update and complete button %>
-    <% if policy(@hangout).update? && current_user == @hangout.user && @hangout.status != "pending" && @hangout.status != "completed"%>
-      <%= link_to 'Edit', edit_hangout_path(@hangout), class: "btn btn-primary" %>
-      <%= link_to 'Complete',
-                    hangout_path(@hangout, hangout: {status: "completed"}),
-                    method: :patch, class: "btn btn-info",
-                    data: { confirm: "Are you sure?" }%>
-    <% end %>
-    <%# Delete button %>
-    <% if policy(@hangout).destroy? %>
-      <%= link_to "Delete",
-                      hangout_path(@hangout),
-                      class: "btn btn-warning",
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
+  <div>
+    <div class="d-flex align-items-center justify-content-center">
+      <% if @hangout.profile.photo.attached? %>
+      <%= cl_image_tag @hangout.profile.photo.key, class: "avatar-hangout" %>
+      <% else %>
+      <%= cl_image_tag "avatar_ivxvwp", class: "avatar-hangout" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="buttons">
+  <%# Update and complete button %>
+  <% if policy(@hangout).update? && current_user == @hangout.user && @hangout.status != "pending" && @hangout.status != "completed"%>
+  <%= link_to 'Edit', edit_hangout_path(@hangout), class: "btn btn-primary" %>
+  <%= link_to 'Complete',
+  hangout_path(@hangout, hangout: {status: "completed"}),
+  method: :patch, class: "btn btn-info",
+  data: { confirm: "Are you sure?" }%>
+  <% end %>
+  <%# Delete button %>
+  <% if policy(@hangout).destroy? %>
+  <%= link_to "Delete",
+  hangout_path(@hangout),
+  class: "btn btn-warning",
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>
     <% end %>
     <%# Accept and Reject button %>
     <% if current_user.profile == @hangout.profile && @hangout.status == "pending" %>
-      <%= link_to 'Accept',
-                      hangout_path(@hangout, hangout: {status: "accepted"}),
-                      method: :patch, class: "btn btn-primary" %>
-      <%= link_to 'Reject',
-                      hangout_path(@hangout, hangout: {status: "rejected"}),
-                      method: :patch, class: "btn btn-danger" %>
+    <%= link_to 'Accept',
+    hangout_path(@hangout, hangout: {status: "accepted"}),
+    method: :patch, class: "btn btn-primary" %>
+    <%= link_to 'Reject',
+    hangout_path(@hangout, hangout: {status: "rejected"}),
+    method: :patch, class: "btn btn-danger" %>
     <% end %>
-      <%= link_to 'Back', dashboard_path, class: "btn btn-info" %>
+    <%= link_to 'Back', dashboard_path, class: "btn btn-info" %>
   </div>
 </div>
 
@@ -55,25 +69,25 @@
               <h5>
                 <% case @hangout.review.rating %>
                 <% when 1 %>
-                  <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
                 <% when 2 %>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
                 <% when 3 %>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
                 <% when 4 %>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
                 <% when 5 %>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
                 <% end %>
               </h5>
 
@@ -83,11 +97,11 @@
             <div>
               <h3>Leave your review here 😊</h3>
               <%= simple_form_for [@hangout, @review] do |f| %>
-                <%= f.input :comment %>
-                <%= f.input :rating, collection: 1..5 %>
-                <%= f.submit %>
+              <%= f.input :comment %>
+              <%= f.input :rating, collection: 1..5 %>
+              <%= f.submit %>
               <% end %>
-            <% end %>
+              <% end %>
             </div>
 
           </ul>
@@ -95,5 +109,3 @@
       </div>
     </div>
   </div>
-
-</div>

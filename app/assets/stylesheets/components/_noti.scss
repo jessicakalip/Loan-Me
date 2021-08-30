@@ -17,8 +17,6 @@
   padding: 0 24px;
 }
 
-
-
 .notification p {
   margin: 0;
   line-height: 1.4;
@@ -46,4 +44,11 @@
 
 .notification .notification-actions a:hover {
   color: #555555;
+}
+
+@media (max-width: 600px) {
+  .notification .notification-content {
+    flex-grow: 1;
+    padding-right: 8px;
+  }
 }
