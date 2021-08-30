@@ -34,6 +34,8 @@ import "bootstrap";
 
 
 
+import { scrollingTab } from '../components/scrolling_tab';
+scrollingTab();
 
 import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {

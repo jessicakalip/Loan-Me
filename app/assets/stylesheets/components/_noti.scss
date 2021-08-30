@@ -2,15 +2,22 @@
 .notification {
   display: flex;
   align-items: center;
-  background: white;
   padding: 8px 16px;
-  border: 1px solid rgb(235,235,235);
+  border-bottom: 1px solid #282828;
+}
+
+.notification-no-border {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
 }
 
 .notification .notification-content {
   flex-grow: 1;
   padding: 0 24px;
 }
+
+
 
 .notification p {
   margin: 0;
