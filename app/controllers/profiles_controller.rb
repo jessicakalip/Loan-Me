@@ -34,6 +34,7 @@ class ProfilesController < ApplicationController
       {
         lat: profile.latitude,
         lng: profile.longitude
+
       }
     end
   end

@@ -20,14 +20,31 @@ body {
   margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.172549) 0 6px 12px 0;
   cursor: pointer;
-  height: 40vh !important;
+  height: 45vh !important;
 }
 
+#map {
+  height: 45vh !important;
+}
+
+.search-img {
+
+}
+.search-label {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px
+}
 .search-element {
   display: flex;
   flex-grow: 2;
-  border-right: 1px solid rgba(10, 10, 10, 0.1);
+  // border-right: 1px solid rgba(10, 10, 10, 0.1);
   padding: 0 1em 1em 0;
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+  // border-radius: 5px;
+  background-color: #FEF9F0;
+  border-color: #E5E5E5;
+  color: #E5E5E5;
 }
 
 .btn {
@@ -40,6 +57,7 @@ body {
 }
 
 
+
 .search-input {
   border: none;
   appearance: none;
@@ -48,6 +66,19 @@ body {
   font-size: 1.2em;
   line-height: 1.2em;
   margin-top: 5px;
+  background-color: #FEF9F0;
+}
+
+.search-select {
+  border: none;
+  appearance: none;
+  outline: none;
+  width: 100%;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin-top: 5px;
+  background-color: #FEF9F0;
+  border-radius: 10px;
 }
 
 .search-input:focus {
@@ -55,25 +86,30 @@ body {
 }
 
 .search-button {
-  display: inline-block;
-  flex-grow: 1;
+  // display: inline-block;
+  // flex-grow: 1;
+  position: absolute;
+  right: 3px;
+  bottom: 5px;
   height: 40px;
   padding: 0 1em;
   text-align: center;
   font-size: 1.2em;
   font-weight: 100;
   border: 0;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 5px;
+  font-family: "Raleway", sans-serif;
+  // border-top-left-radius: 5px;
+  // border-bottom-left-radius: 5px;
+  // border-top-right-radius: 5px;
+  // border-bottom-right-radius: 5px;
   color: white;
-  background-color: $green;
+  background-color: #0265DC;
   transition: background-color 0.8s ease;
 }
 
 .search-button:hover {
-  background-color: HSLA(345, 100%, 60%, 1);
+  background-color: #ED462F;
 }
 
 
