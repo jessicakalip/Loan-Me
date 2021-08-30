@@ -6,6 +6,18 @@
   border-bottom: 1px solid #282828;
 }
 
+.notification-search {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid #E5E5E5;
+  &:hover {
+    background: #F6C3D5;
+    transition: .5s;
+    text-decoration: none;
+  }
+}
+
 .notification-no-border {
   display: flex;
   align-items: center;

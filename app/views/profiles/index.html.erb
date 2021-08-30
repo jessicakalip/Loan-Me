@@ -1,7 +1,10 @@
 
 
-<div class="container mt-4 mx-3 border-bottom">
+<div class="container mt-4 mx-3">
   <div class="row">
+
+
+
     <div class="col-8">
       <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
         <div class="product-search mb-3">
@@ -11,14 +14,14 @@
           <div class="col-3 pl-4">
             <%= f.label :address, class: "search-label" %>
             <div class="search-element">
-              <%= f.select :address, ['All', 'Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'], selected: params[:address], class: "search-input" %>
+              <%= f.select :address, ['All', 'Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'], selected: params[:address], class: "search-select" %>
             </div>
           </div>
 
             <div class="col-3">
               <%= f.label :gender, class: "search-label" %>
               <div class="search-element">
-                <%= f.select :gender, Profile::GENRES, :prompt => 'Select One', selected: params[:gender], class: "search-input"%>
+                <%= f.select :gender, Profile::GENRES, :prompt => 'Select One', selected: params[:gender], class: "search-select"%>
               </div>
             </div>
         </div>
@@ -28,7 +31,7 @@
               <div class="search-element mt-4">
                 <%= text_field_tag :min_age,
                   params[:min_age],
-                  class: "search-input",
+                  class: "search-input border-bottom",
                   placeholder: "Min age",
                   value: params[:min_age]%>
               </div>
@@ -72,6 +75,8 @@
         </div>
       <% end %>
     </div>
+
+
     <div class="col-4 mb-5">
       <div id="map"
         class="results-map"
@@ -79,19 +84,27 @@
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
+
   </div>
 </div>
 
-<div class="container results-container mt-4">
+<div class="container search-img ml-5">
+  <div class="row">
+    <img src="../../assets/search2" alt="Search image" width=10%>
+    <h2 class="ml-3 mt-4"><%= @profiles.length %> Friends in the result:</h2>
+  </div>
+</div>
+
+<div class="container mt-4">
   <div class="row">
     <% @profiles.each do |profile| %>
-      <div class="col-6">
+      <div class="col-lg-6 col-sm-12">
         <%= link_to profile_path(profile), class: "card-link" do %>
           <div class="card-friend">
             <% if profile.photo.attached? %>
-              <%= cl_image_tag profile.photo.key %>
+              <%= cl_image_tag profile.photo.key, class: "avatar-large" %>
             <% else %>
-              <%= cl_image_tag "avatar_ivxvwp" %>
+              <%= cl_image_tag "avatar_ivxvwp", class: "avatar-large" %>
             <% end %>
             <div class="card-friend-infos">
               <p><%= profile.name %>
