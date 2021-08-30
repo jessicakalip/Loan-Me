@@ -5,19 +5,25 @@
     <div class="col-8">
       <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
         <div class="product-search mb-3">
-         <div class="row w-100">
+
+         <div class="row w-100 mt-3">
+
           <div class="col-3 pl-4">
             <%= f.label :address, class: "search-label" %>
             <div class="search-element">
               <%= f.select :address, ['All', 'Marseille', 'Paris', 'Lyon', 'Nice', 'Reims'], selected: params[:address], class: "search-input" %>
             </div>
           </div>
+
             <div class="col-3">
               <%= f.label :gender, class: "search-label" %>
               <div class="search-element">
                 <%= f.select :gender, Profile::GENRES, :prompt => 'Select One', selected: params[:gender], class: "search-input"%>
               </div>
             </div>
+        </div>
+
+        <div class="row w-100">
             <div class="col-3">
               <div class="search-element mt-4">
                 <%= text_field_tag :min_age,
@@ -37,10 +43,14 @@
                 value: params[:max_age]%>
             </div>
           </div>
-         </div>
+
+        </div>
+
+
           <div class="row w-100">
+
             <div class="col-9 ml-2">
-              <p class="mb-0">Interests:</p>
+              <div class=" search-label mb-3">Interests</div>
                 <div class="bs-example flex-wrap">
                   <% Profile::INTERESTS.each do |interest| %>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -50,13 +60,15 @@
                     </div>
                   <% end %>
                 </div>
-
-
             </div>
+
+
             <div class="col-2 d-flex justify-content-center align-items-center">
-              <%= submit_tag "Search", class: "btn btn-success search-button" %>
+              <%= submit_tag "Search", class: "btn search-button" %>
             </div>
           </div>
+
+
         </div>
       <% end %>
     </div>
