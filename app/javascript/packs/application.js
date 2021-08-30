@@ -24,8 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { initLabel } from '../components/init_label';
-initLabel();
+// import { initLabel } from '../components/init_label';
+// initLabel();
 // document.addEventListener('click', () => {
 //   initLabel();
 // })

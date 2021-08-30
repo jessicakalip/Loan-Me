@@ -41,14 +41,17 @@
           <div class="row w-100">
             <div class="col-9 ml-2">
               <p class="mb-0">Interests:</p>
-              <div class="search-element flex-wrap">
-                <% Profile::INTERESTS.each do |interest| %>
-                  <div class="d-flex m-0 align-items-center">
-                    <label for="" class="search-label mb-2 mx-2"></label>
-                    <input type="submit" name="interests[]" class="tag search-label mb-2 mx-2" value="<%=interest%>" <%= "checked" if params[:interests].present? && params[:interests].include?(interest)%>>
-                  </div>
-                <% end %>
-              </div>
+                <div class="bs-example flex-wrap">
+                  <% Profile::INTERESTS.each do |interest| %>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-success mb-2 mx-2">
+                        <input type="checkbox" name="interests[]" class="mb-2 mx-2" autocomplete="off" value="<%=interest%>" <%= "checked" if params[:interests].present? && params[:interests].include?(interest)%>> <%= interest %>
+                      </label>
+                    </div>
+                  <% end %>
+                </div>
+
+
             </div>
             <div class="col-2 d-flex justify-content-center align-items-center">
               <%= submit_tag "Search", class: "btn btn-success search-button" %>
