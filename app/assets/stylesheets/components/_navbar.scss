@@ -5,6 +5,8 @@
     font-size: 45px;
   }
 
+
+
   .login {
     margin-right: 3rem;
     .text {
@@ -20,6 +22,11 @@
 
   .fa-caret-right {
     color: $red;
+    font-size: 30px;
+  }
+
+  .fa-caret-left {
+    color: #0265DC;
     font-size: 30px;
   }
 
@@ -39,3 +46,4 @@
     }
   }
 }
+
