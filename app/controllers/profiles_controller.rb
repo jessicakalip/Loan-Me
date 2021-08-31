@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[show destroy edit update]
   def index
     @profiles = policy_scope(Profile)
+
     if params[:address] == "All"
       @profiles = policy_scope(Profile)
     elsif params[:address].present?
