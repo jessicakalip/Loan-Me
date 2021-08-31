@@ -70,6 +70,17 @@ body {
   margin: 0 auto;
 }
 
+.form {
+  position: relative;
+  height: 30vh;
+}
+
+.form-button {
+  position: absolute;
+  right: 18px;
+  bottom: 13px;
+}
+
 .search-select {
   border: none;
   appearance: none;
