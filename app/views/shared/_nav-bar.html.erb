@@ -1,20 +1,28 @@
 <div class="nav-bar">
   <div class="row justify-content-between align-items-center">
-    <div class="col-2">
+    <div class="col-1">
         <i class="fas fa-bars drop-down"></i>
     </div>
-    <div class="col-4">
-    <div class="content row justify-content-end align-items-end">
-      <div class="col-5">
+    <div class="col-9">
+    <div class="content d-flex justify-content-end align-items-end">
+      <div class="login">
         <%= link_to new_user_registration_path do %>
-          <p class="d-inline mr-2">Sign up</p>
-          <i class="fas fa-caret-right d-inline"></i>
+          <div class="d-flex align-items-center">
+          <div class="text">
+            <p class="d-inline mr-2">Sign up</p>
+          </div>
+            <i class="fas fa-caret-right d-inline"></i>
+          </div>
         <% end %>
       </div>
-      <div class="col-5">
+      <div class="login">
         <%= link_to new_user_session_path do %>
-          <p class="d-inline mr-2">Log in</p>
+        <div class="d-flex align-items-center">
+          <div class="text">
+            <p class="d-inline mr-2">Log in</p>
+          </div>
           <i class="fas fa-caret-right d-inline"></i>
+        </div>
         <% end %>
       </div>
     </div>
