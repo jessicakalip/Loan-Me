@@ -4,28 +4,43 @@
         <i class="fas fa-bars drop-down"></i>
     </div>
     <div class="col-9">
-    <div class="content d-flex justify-content-end align-items-end">
-      <div class="login">
-        <%= link_to new_user_registration_path do %>
-          <div class="d-flex align-items-center">
-          <div class="text">
-            <p class="d-inline mr-2">Sign up</p>
+    <% if user_signed_in? %>
+      <div class="content d-flex justify-content-end align-items-end">
+          <div class="login">
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <div class="d-flex align-items-center">
+              <div class="text">
+                <p class="d-inline mr-2">Log out</p>
+              </div>
+              <i class="fas fa-caret-right d-inline"></i>
+            </div>
+            <% end %>
           </div>
-            <i class="fas fa-caret-right d-inline"></i>
-          </div>
-        <% end %>
-      </div>
-      <div class="login">
-        <%= link_to new_user_session_path do %>
-        <div class="d-flex align-items-center">
-          <div class="text">
-            <p class="d-inline mr-2">Log in</p>
-          </div>
-          <i class="fas fa-caret-right d-inline"></i>
         </div>
-        <% end %>
-      </div>
-    </div>
+      <% else %>
+        <div class="content d-flex justify-content-end align-items-end">
+          <div class="login">
+            <%= link_to new_user_registration_path do %>
+              <div class="d-flex align-items-center">
+              <div class="text">
+                <p class="d-inline mr-2">Sign up</p>
+              </div>
+                <i class="fas fa-caret-right d-inline"></i>
+              </div>
+            <% end %>
+          </div>
+          <div class="login">
+            <%= link_to new_user_session_path do %>
+            <div class="d-flex align-items-center">
+              <div class="text">
+                <p class="d-inline mr-2">Log in</p>
+              </div>
+              <i class="fas fa-caret-right d-inline"></i>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
