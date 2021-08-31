@@ -1,0 +1,13 @@
+Searching 187 files for ".container"
+
+/Users/apple/Loan-Me/app/assets/stylesheets/pages/_home.scss:
+    1  // Specific CSS for your home-page
+    2  .home {
+    3:   .container {
+    4      width: 70%;
+    5      padding-top: 40px;
+         }
+        }
+
+
+1 match in 1 file
