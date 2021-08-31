@@ -21,51 +21,27 @@
   </div>
 </div>
 
-
-
-
-<div class="buttons">
-  <%# Update and complete button %>
-  <% if policy(@hangout).update? && current_user == @hangout.user && @hangout.status != "pending" && @hangout.status != "completed"%>
-  <%= link_to 'Edit', edit_hangout_path(@hangout), class: "btn btn-primary" %>
-  <%= link_to 'Complete',
-  hangout_path(@hangout, hangout: {status: "completed"}),
-  method: :patch, class: "btn btn-info",
-  data: { confirm: "Are you sure?" }%>
+<!-- Status and date/time -->
+<div class="notification-content">
+  <% if @hangout.status == "pending" %>
+    <p class="ml-5 pl-4">Status: <span class="status-color-red"><%= @hangout.status %><span></p>
+  <% elsif @hangout.status == "accepted" %>
+    <p class="status-color-green ml-5 pl-4"><%= @hangout.status %></p>
+  <% else %>
+    <p class="status-color-blue ml-5 pl-4"><%= @hangout.status %></p>
   <% end %>
-  <%# Delete button %>
-  <% if policy(@hangout).destroy? %>
-  <%= link_to "Delete",
-  hangout_path(@hangout),
-  class: "btn btn-warning",
-    method: :delete,
-    data: { confirm: "Are you sure?" } %>
-    <% end %>
-    <%# Accept and Reject button %>
-    <% if current_user.profile == @hangout.profile && @hangout.status == "pending" %>
-    <%= link_to 'Accept',
-    hangout_path(@hangout, hangout: {status: "accepted"}),
-    method: :patch, class: "btn btn-primary" %>
-    <%= link_to 'Reject',
-    hangout_path(@hangout, hangout: {status: "rejected"}),
-    method: :patch, class: "btn btn-danger" %>
-    <% end %>
-    <%= link_to 'Back', dashboard_path, class: "btn btn-info" %>
-  </div>
+  <p class="ml-5 pl-4">When: <%= @hangout.date.strftime("%b %d, %Y") %> <%= @hangout.time.strftime("%I:%M %p") %></p>
 </div>
 
-<div class="container py-5">
-
-  <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8">
-      <div class="row justify-content-center align-items-end mb-5 ">
-        <div class="col-8 card">
+<!-- Review -->
+<div>
+  <div>
+    <div>
+      <div>
+        <div>
           <ul>
-            <div class="border-bottom py-3">
-              <li><h5>Hangout status: <%= @hangout.status %></h5></li>
-              <li><h5>Date&Time: <%= @hangout.date.strftime("%b %d, %Y") %> <%= @hangout.time.strftime("%I:%M %p") %></h5></li>
+            <div>
               <% if @hangout.review && @hangout.review.persisted? %>
-
               <h5>
                 <% case @hangout.review.rating %>
                 <% when 1 %>
@@ -103,9 +79,31 @@
               <% end %>
               <% end %>
             </div>
-
           </ul>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Buttons -->
+<div class="hangout-button-div">
+  <%# Update and complete button %>
+  <% if policy(@hangout).update? && current_user == @hangout.user && @hangout.status != "pending" && @hangout.status != "completed"%>
+    <%= link_to 'Edit', edit_hangout_path(@hangout), class: "hangout-button" %>
+    <%= link_to 'Complete', hangout_path(@hangout, hangout: {status: "completed"}), method: :patch, class: "hangout-button", data: { confirm: "Are you sure?" }%>
+  <% end %>
+  <%# Delete button %>
+  <% if policy(@hangout).destroy? %>
+    <%= link_to "Delete", hangout_path(@hangout), class: "hangout-button", method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <%# Accept and Reject button %>
+    <% if current_user.profile == @hangout.profile && @hangout.status == "pending" %>
+      <%= link_to 'Accept', hangout_path(@hangout, hangout: {status: "accepted"}), method: :patch, class: "hangout-button" %>
+      <%= link_to 'Reject', hangout_path(@hangout, hangout: {status: "rejected"}), method: :patch, class: "hangout-button" %>
+    <% end %>
+    <%= link_to 'Back', dashboard_path, class: "hangout-button" %>
+  </div>
+</div>
+
+
