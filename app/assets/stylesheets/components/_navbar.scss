@@ -5,6 +5,13 @@
     font-size: 45px;
   }
 
+  .login {
+    margin-right: 3rem;
+    .text {
+      padding-bottom: 4px;
+    }
+  }
+
   a {
     text-decoration: none;
     color: black;
@@ -24,5 +31,11 @@
   .content {
     margin: 0;
     padding: 0;
+  }
+
+  @media (max-width: 600px) {
+    .login {
+      margin-right: 0.5rem;
+    }
   }
 }
