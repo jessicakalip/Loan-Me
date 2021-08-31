@@ -2,13 +2,12 @@
   overflow: hidden;
   height: 8vw;
   width: 30vw;
-  background: white;
+  background: #FEF9F0;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin-top: 8px;
   margin-bottom: 8px;
-  margin-right: none;
   color: rgb(40,40,40);
   border-radius: 67px;
   &:hover {
@@ -51,7 +50,7 @@
 }
 
 .card-friend p {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
