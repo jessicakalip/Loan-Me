@@ -27,9 +27,6 @@ body {
   height: 45vh !important;
 }
 
-.search-img {
-
-}
 .search-label {
   font-family: "Raleway", sans-serif;
   font-size: 24px
@@ -67,6 +64,10 @@ body {
   line-height: 1.2em;
   margin-top: 5px;
   background-color: #FEF9F0;
+}
+
+.result-area {
+  margin: 0 auto;
 }
 
 .search-select {
