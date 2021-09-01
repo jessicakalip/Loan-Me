@@ -91,13 +91,14 @@
 <div class="container search-img ml-5">
   <div class="row">
     <img src="../../assets/search2" alt="Search image" width=10%>
-    <h2 class="ml-3 mt-4"><%= @profiles.length %> Friends in the Result:</h2>
+    <h2 class="ml-3 mt-4"><%= @profiles.uniq.length %> Friends in the Result:</h2>
   </div>
 </div>
 
 <div class="result-area">
-  <div class="row d-flex justify-content-center">
-    <% @profiles.each do |profile| %>
+  <div class="row d-flex">
+
+    <% @profiles.uniq.each do |profile| %>
       <div class="col-lg-6 col-sm-12">
         <div class="d-flex justify-content-center">
           <%= link_to profile_path(profile), class: "card-link" do %>
