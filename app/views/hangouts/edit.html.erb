@@ -1,19 +1,41 @@
-<div class="banner">
-  <div class="container m-5 p-5 ">
-    <h1>Edit your hangout details</h1>
+<!-- Flex box containing Title and Avatar -->
+<div class="responsive-avatar-title">
+  <div class="ml-5 pl-4">
+    <h1 >Edit hangout:</h1>
+    <h1 class="my-4"><span class="blue-font"><%= @hangout.profile.name %></span></h1>
   </div>
-</div>
-
-
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6">
-      <h1>Edit your Hangout booking</h1>
-        <%= simple_form_for [@profile, @hangout] do |f| %>
-      <%= f.input :date, html5: true, input_html: {min: Date.today} %>
-      <%= f.input :time %>
-      <%= f.submit "Edit",  class: "btn btn-primary" %>
+  <div>
+    <div class="d-flex align-items-center justify-content-center">
+      <% if @hangout.profile.photo.attached? %>
+      <%= cl_image_tag @hangout.profile.photo.key, class: "avatar-hangout" %>
+      <% else %>
+      <%= cl_image_tag "avatar_ivxvwp", class: "avatar-hangout" %>
       <% end %>
     </div>
   </div>
+</div>
+
+<!-- Edit Form -->
+<div class="pl-5 ml-4">
+  <%= form_for [@profile, @hangout] do |f| %>
+    <p class="mb-0">
+      <%= f.label :date, 'date:', class: 'review-form-label' %>
+    </p>
+    <p class="mb-0">
+      <%= f.date_field :date, data:{ provide:'datepicker' } %>
+    </p>
+    <p class="mb-0">
+      <%= f.label :time, 'time:', class: 'review-form-label' %>
+    </p>
+    <p class="mb-4">
+      <%= f.time_select :time, class: 'review-form-input' %>
+    </p>
+    <div class="d-flex align-items-center">
+      <p class="mb-0">
+      <%= f.submit "Edit", class: 'hangout-edit-button' %>
+    </p>
+    <p class="mb-0 ">
+      <%= link_to 'Back', dashboard_path, class: "hangout-button" %></p>
+    </div>
+  <% end %>
 </div>

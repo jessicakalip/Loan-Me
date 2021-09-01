@@ -25,7 +25,11 @@
 }
 
 .checked {
-  color: orange;
+  color: $black;
+}
+
+.unchecked {
+  color: #bdbdbd;
 }
 
 .hangouts-grey {
