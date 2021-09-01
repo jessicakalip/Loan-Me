@@ -14,7 +14,7 @@
 
        
 
-          <div class="py-3">
+          <div class="py-3 text-justify">
             <p><%= @profile.name %>
                 <% if @profile.gender == "female" %>
                   <i class="fas fa-venus"></i>
@@ -25,7 +25,7 @@
                 <% end %>
                 <%= @profile.age %></p>
             <p>Interests: <%= @profile.interest.gsub(/[",\[\]]/, "") %></p>
-            <p>⭐<%= @profile.average_rating %></p>
+            <p><i class="fas fa-star"></i><%= @profile.average_rating %></p>
           </div>
 
         <% if policy(@profile).edit?%>
@@ -44,7 +44,7 @@
         <div class="text-center">
           <h3>Book a Hangout with <%= @profile.name %> !</h3>
         </div>
-        <div class="form p-3 mt-5 border">
+        <div class="form p-3 mt-5 border rounded">
           <%= simple_form_for [@profile, @hangout] do |f| %>
             <%= f.input :date, html5: true, input_html: {min: Date.today} %>
             <%= f.input :time %>
