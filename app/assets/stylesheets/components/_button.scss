@@ -45,7 +45,6 @@
 }
 
 .hangout-button-div {
-  margin-top: 3rem;
   margin-left: 3rem;
   padding-left: 1.5rem;
 }
@@ -59,6 +58,7 @@
   border-radius: 40px;
   border: 1px solid #000000;
   padding: 1vw 4vw;
+  background-color: #fff9f0;
   &:hover {
     text-decoration: none;
     color: $black;
@@ -67,8 +67,58 @@
   }
 }
 
+.hangout-save-button {
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 2vw;
+  color: $black;
+  margin-right: 1rem;
+  border-radius: 40px;
+  border: 1px solid #000000;
+  padding: 0.7vw 4.8vw;
+  background-color: #fff9f0;
+  margin-bottom: 1.5rem;
+  &:hover {
+    text-decoration: none;
+    color: $black;
+    background-color: #fff0c7;
+    transition: 0.5s;
+  }
+}
+
+.hangout-edit-button {
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 2vw;
+  color: $black;
+  margin-right: 1rem;
+  border-radius: 40px;
+  border: 1px solid #000000;
+  padding: 0.7vw 4.8vw;
+  background-color: #fff9f0;
+  &:hover {
+    text-decoration: none;
+    color: $black;
+    background-color: #fff0c7;
+    transition: 0.5s;
+  }
+}
+
+.top-buttons {
+  margin-bottom: 2.5rem;
+}
+
 @media (max-width: 600px) {
   .hangout-button {
+    font-size: 4vw;
+  }
+  .hangout-save-button {
+    font-size: 4vw;
+  }
+  .top-buttons {
+    margin-bottom: 1.5rem;
+  }
+  .hangout-edit-button {
     font-size: 4vw;
   }
 }
