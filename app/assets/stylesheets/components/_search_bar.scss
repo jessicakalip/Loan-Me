@@ -50,9 +50,15 @@ body {
 @media(max-width: 768px) {
   #map  {
     height: 60vh !important;
+    width: 100%;
   }
 }
 
+@media(min-width: 768px) {
+  #map  {
+    width: 42vw !important;
+  }
+}
 
 .search-label {
   font-family: "Raleway", sans-serif;
