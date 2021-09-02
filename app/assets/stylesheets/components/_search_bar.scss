@@ -11,6 +11,12 @@ body {
   // margin-top: 100px;
 }
 
+.search-container {
+  // width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .product-search {
   display: flex;
   flex-direction: column;
@@ -36,6 +42,12 @@ body {
   }
 }
 
+@media(min-width: 768px) {
+  .search-form  {
+    width: 50%;
+  }
+}
+
 #map {
   height: 45vh !important;
 }
@@ -55,8 +67,8 @@ body {
 }
 
 @media(min-width: 768px) {
-  #map  {
-    width: 42vw !important;
+  .map-search  {
+    width: 40% !important;
   }
 }
 
@@ -102,7 +114,7 @@ body {
 }
 
 .result-area {
-  margin: 0 auto;
+  width: 95% !important;
 }
 
 .form {

@@ -1,11 +1,12 @@
 
 
-<div class="container mt-4">
-  <div class="row">
+<div class="search-container mt-4">
+  <div class="d-flex">
 
 
 
-    <div class="col-sm-12 col-md-8">
+    <div class="search-form mr-3">
+
       <%= form_with url: profiles_path, method: :get, data: {remote: false} do |f|%>
         <div class="product-search mb-3">
 
@@ -77,7 +78,7 @@
     </div>
 
 
-    <div class="col-sm-12 col-md-4 mb-5">
+    <div class="map-search mb-5">
       <div id="map"
         class="results-map"
         data-markers="<%= @markers.to_json %>"
@@ -99,7 +100,7 @@
   <div class="row d-flex">
 
     <% @profiles.uniq.each do |profile| %>
-      <div class="col-lg-6 col-sm-12">
+      <div class="col-lg-6 col-sm-12 p-0">
         <div class="d-flex justify-content-center">
           <%= link_to profile_path(profile), class: "card-link" do %>
             <div class="card-friend">
