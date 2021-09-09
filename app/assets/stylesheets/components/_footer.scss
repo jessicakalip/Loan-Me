@@ -24,6 +24,13 @@
   opacity: 0.15;
 }
 
+.attribution {
+  font-size: 13px;
+  a {
+    font-size: 17px;
+  }
+}
+
 @media (max-width: 540px) {
   /* For a screen < 540px, this CSS will be read */
   .footer-copyright {
