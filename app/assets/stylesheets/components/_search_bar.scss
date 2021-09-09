@@ -23,9 +23,36 @@ body {
   height: 45vh !important;
 }
 
+@media(max-width: 1130px) {
+  .product-search  {
+    height: 60vh !important;
+  }
+}
+
+
+@media(max-width: 768px) {
+  .product-search  {
+    height: 60vh !important;
+  }
+}
+
 #map {
   height: 45vh !important;
 }
+
+@media(max-width: 1130px) {
+  #map  {
+    height: 60vh !important;
+  }
+}
+
+
+@media(max-width: 768px) {
+  #map  {
+    height: 60vh !important;
+  }
+}
+
 
 .search-label {
   font-family: "Raleway", sans-serif;
@@ -52,8 +79,17 @@ body {
   border-color: #E5E5E5;
   color: black;
 }
+.fa-star.checked {
+  color: $black;
+}
 
+.fa-star.unchecked {
+  color: #bdbdbd;
+}
 
+.fa-star {
+  color: #FBD033;
+}
 
 .search-input {
   border: none;
@@ -68,6 +104,17 @@ body {
 
 .result-area {
   margin: 0 auto;
+}
+
+.form {
+  position: relative;
+  height: 30vh;
+}
+
+.form-button {
+  position: absolute;
+  right: 18px;
+  bottom: 13px;
 }
 
 .search-select {

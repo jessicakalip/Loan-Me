@@ -4,10 +4,11 @@
   <div class="ml-5 pl-4">
     <% if current_user == @hangout.user %>
     <h1 >Hangout with</h1>
-    <h1 class="my-4"><%= @hangout.profile.name %></h1>
+    <h1 class="my-4"><span class="blue-font"><%= @hangout.profile.name %></span></h1>
     <% else %>
     <h1>Request from</h1>
-    <h1 class="my-4"><%= @hangout.user.email %></h1>
+    <% name_array = @hangout.user.email.split('@')[0] %>
+    <h1 class="my-4"><span class="blue-font"><%= name_array %></span></h1>
     <% end %>
   </div>
   <div>
@@ -21,91 +22,113 @@
   </div>
 </div>
 
-
-
-
-<div class="buttons">
-  <%# Update and complete button %>
-  <% if policy(@hangout).update? && current_user == @hangout.user && @hangout.status != "pending" && @hangout.status != "completed"%>
-  <%= link_to 'Edit', edit_hangout_path(@hangout), class: "btn btn-primary" %>
-  <%= link_to 'Complete',
-  hangout_path(@hangout, hangout: {status: "completed"}),
-  method: :patch, class: "btn btn-info",
-  data: { confirm: "Are you sure?" }%>
+<!-- Status and date/time -->
+<div class="notification-content">
+  <% if @hangout.status == "pending" %>
+    <p class="ml-5 pl-4">Status: <span class="status-color-red"><%= @hangout.status %><span></p>
+  <% elsif @hangout.status == "accepted" %>
+    <p class="status-color-green ml-5 pl-4"><%= @hangout.status %></p>
+  <% else %>
+    <p class="status-color-blue ml-5 pl-4"><%= @hangout.status %></p>
   <% end %>
-  <%# Delete button %>
-  <% if policy(@hangout).destroy? %>
-  <%= link_to "Delete",
-  hangout_path(@hangout),
-  class: "btn btn-warning",
-    method: :delete,
-    data: { confirm: "Are you sure?" } %>
+  <p class="ml-5 pl-4 mb-4.5">When: <%= @hangout.date.strftime("%b %d, %Y") %> <%= @hangout.time.strftime("%I:%M %p") %></p>
+</div>
+
+<!-- Reviews -->
+
+<div class="ml-5 pl-4 mt-4">
+  <div>
+    <!-- Review displayed -->
+    <% if @hangout.review && @hangout.review.persisted? %>
+    <% name_array = @hangout.review.user.email.split('@')[0] %>
+    <p><%= name_array %>'s review:</p>
+    <div class="d-flex">
+      <p class="mr-5">
+        <% case @hangout.review.rating %>
+        <% when 1 %>
+        <span class="fa checked"></span>
+        <span class="fa unchecked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <% when 2 %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <% when 3 %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <% when 4 %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star unchecked"></span>
+        <% when 5 %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <% end %>
+      </p>
+      <p class="mr-3"><%= @hangout.review.comment %></p>
+    </div>
+
+
+
+    <% elsif policy(@review).create? %>
+      <div>
+        <%= form_for [@hangout, @review] do |f| %>
+          <p class="mb-0">
+            <%= f.label :comment, 'comment:', class: 'review-form-label' %>
+          </p>
+          <p class="mb-0">
+            <%= f.text_area :comment, class: 'review-form-comment-input' %>
+          </p>
+          <p class="mb-0">
+            <%= f.label :rating, 'rating:', class: 'review-form-label' %>
+          </p>
+          <p class="mb-4">
+            <%= f.select :rating, [5, 4, 3, 2, 1], class: 'review-form-input' %>
+          </p>
+          <p class="mb-0">
+            <%= f.submit "Save", class: 'hangout-save-button' %>
+          </p>
+        <% end %>
+      </div>
     <% end %>
-    <%# Accept and Reject button %>
+  </div>
+
+</div>
+
+
+<!-- Buttons -->
+<div class="hangout-button-div">
+  <%# Update and complete button %>
+  <div class="top-buttons">
+    <% if policy(@hangout).update? && current_user == @hangout.user && @hangout.status != "pending" && @hangout.status != "completed"%>
+    <%= link_to 'Edit', edit_hangout_path(@hangout), class: "hangout-button" %>
+    <%= link_to 'Complete', hangout_path(@hangout, hangout: {status: "completed"}), method: :patch, class: "hangout-button", data: { confirm: "Are you sure?" }%>
+    <% end %>
+  </div>
+  <div>
+    <%# Delete button %>
+    <% if policy(@hangout).destroy? %>
+      <%= link_to "Delete", hangout_path(@hangout), class: "hangout-button", method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+      <%# Accept and Reject button %>
     <% if current_user.profile == @hangout.profile && @hangout.status == "pending" %>
-    <%= link_to 'Accept',
-    hangout_path(@hangout, hangout: {status: "accepted"}),
-    method: :patch, class: "btn btn-primary" %>
-    <%= link_to 'Reject',
-    hangout_path(@hangout, hangout: {status: "rejected"}),
-    method: :patch, class: "btn btn-danger" %>
+        <%= link_to 'Accept', hangout_path(@hangout, hangout: {status: "accepted"}), method: :patch, class: "hangout-button" %>
+        <%= link_to 'Reject', hangout_path(@hangout, hangout: {status: "rejected"}), method: :patch, class: "hangout-button" %>
     <% end %>
-    <%= link_to 'Back', dashboard_path, class: "btn btn-info" %>
+    <%= link_to 'Back', dashboard_path, class: "hangout-button" %>
   </div>
 </div>
 
-<div class="container py-5">
 
-  <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8">
-      <div class="row justify-content-center align-items-end mb-5 ">
-        <div class="col-8 card">
-          <ul>
-            <div class="border-bottom py-3">
-              <li><h5>Hangout status: <%= @hangout.status %></h5></li>
-              <li><h5>Date&Time: <%= @hangout.date.strftime("%b %d, %Y") %> <%= @hangout.time.strftime("%I:%M %p") %></h5></li>
-              <% if @hangout.review && @hangout.review.persisted? %>
-
-              <h5>
-                <% case @hangout.review.rating %>
-                <% when 1 %>
-                <span class="fa fa-star checked"></span>
-                <% when 2 %>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <% when 3 %>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <% when 4 %>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <% when 5 %>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <% end %>
-              </h5>
-
-              <h5><%= @hangout.review.comment %></h5>
-              <% elsif policy(@review).create? %>
-            </div>
-            <div>
-              <h3>Leave your review here 😊</h3>
-              <%= simple_form_for [@hangout, @review] do |f| %>
-              <%= f.input :comment %>
-              <%= f.input :rating, collection: 1..5 %>
-              <%= f.submit %>
-              <% end %>
-              <% end %>
-            </div>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
