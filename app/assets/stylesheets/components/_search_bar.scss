@@ -11,6 +11,12 @@ body {
   // margin-top: 100px;
 }
 
+.search-container {
+  // width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .product-search {
   display: flex;
   flex-direction: column;
@@ -36,6 +42,12 @@ body {
   }
 }
 
+@media(min-width: 768px) {
+  .search-form  {
+    width: 50%;
+  }
+}
+
 #map {
   height: 45vh !important;
 }
@@ -50,9 +62,15 @@ body {
 @media(max-width: 768px) {
   #map  {
     height: 60vh !important;
+    width: 100%;
   }
 }
 
+@media(min-width: 768px) {
+  .map-search  {
+    width: 40% !important;
+  }
+}
 
 .search-label {
   font-family: "Raleway", sans-serif;
@@ -103,7 +121,7 @@ body {
 }
 
 .result-area {
-  width: 90% !important;
+  width: 95% !important;
 }
 
 .form {
