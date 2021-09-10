@@ -9,8 +9,6 @@ class PagesController < ApplicationController
     @requests = Hangout.where(profile: current_user.profile)
   end
 
-
-
   def components
     @profiles = Profile.all.sample(6)
     @hangouts = Hangout.all.sample(5)

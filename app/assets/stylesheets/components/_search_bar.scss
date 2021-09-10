@@ -97,6 +97,13 @@ body {
   border-color: #E5E5E5;
   color: black;
 }
+.fa-star.checked {
+  color: $black;
+}
+
+.fa-star.unchecked {
+  color: #bdbdbd;
+}
 
 .fa-star {
   color: #FBD033;
@@ -114,7 +121,11 @@ body {
 }
 
 .result-area {
+<<<<<<< HEAD
   width: 95% !important;
+=======
+  width: 90% !important;
+>>>>>>> master
 }
 
 .form {
