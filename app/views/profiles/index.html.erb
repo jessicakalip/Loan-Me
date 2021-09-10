@@ -90,7 +90,8 @@
 
 <div class="container search-img ml-5">
   <div class="row">
-    <img src="../../assets/search2.png" alt="Search image" width=10%>
+    <%= image_tag "search2.png", class:"image", style: 'width:10%;' %>
+    <!--<img src="../../assets/search2.png" alt="Search image" width=10%>-->
     <h2 class="ml-3 mt-4"><%= @profiles.uniq.length %> Friends in the Result:</h2>
   </div>
 </div>
